@@ -1,177 +1,570 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "Québec 511",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Unofficial. Road works and winter road conditions in Québec (MTMD open data).",
+    "fr": "Non officiel. Travaux et conditions routières hivernales au Québec (données ouvertes du MTMD)."
   },
-  "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
-  "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/lm1lc3n7/gladys-quebec-511:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "cover_image": "https://raw.githubusercontent.com/LM1LC3N7/gladys-quebec-511/main/cover.png",
+  "categories": ["transport"],
+  "transports": ["cloud"],
+  "countries": ["CA"],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": {
+        "en": "Québec 511 road works and winter conditions",
+        "fr": "Travaux et conditions hivernales Québec 511"
+      },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Road works in effect and winter road conditions on the network of the Ministère des Transports et de la Mobilité durable du Québec, read from its open data (Données Québec, CC BY 4.0): no account, no key. Up to three zones, each one a device. Check Québec 511 before you drive: this integration is not an official source.",
+        "fr": "Travaux en cours et conditions routières hivernales du réseau du ministère des Transports et de la Mobilité durable du Québec, lus dans ses données ouvertes (Données Québec, CC BY 4.0) : sans compte ni clé. Jusqu'à trois zones, un appareil chacune. Consultez Québec 511 avant de prendre la route : cette intégration n'est pas une source officielle."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://www.quebec511.info/",
+          "label": {
+            "en": "Québec 511",
+            "fr": "Québec 511"
+          }
+        },
+        {
+          "url": "https://www.donneesquebec.ca/recherche/dataset/travaux-routiers",
+          "label": {
+            "en": "Road works dataset",
+            "fr": "Jeu de données Travaux routiers"
+          }
+        },
+        {
+          "url": "https://www.donneesquebec.ca/recherche/dataset/condition-routiere-hivernale-du-reseau-routier-mtq",
+          "label": {
+            "en": "Winter road conditions dataset",
+            "fr": "Jeu de données Condition routière hivernale"
+          }
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "label": {
+            "en": "CC BY 4.0 licence",
+            "fr": "Licence CC BY 4.0"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
-    },
-    {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
-    },
-    {
-      "key": "unit",
+      "key": "language",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
+      "label": {
+        "en": "Language of the summary",
+        "fr": "Langue du résumé"
+      },
+      "description": {
+        "en": "Language of the device names and of the summary text (place names stay as the ministry writes them).",
+        "fr": "Langue des noms d'appareils et du texte de résumé (les noms de lieux restent tels que le ministère les écrit)."
+      },
       "required": false,
-      "default": "celsius",
+      "default": "fr",
       "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français"
+          }
+        }
       ]
     },
     {
-      "key": "poll_frequency",
+      "key": "refresh_minutes",
       "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "label": {
+        "en": "Read interval (minutes)",
+        "fr": "Intervalle de lecture (minutes)"
+      },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "From 15 to 120 minutes. Each read asks the ministry service twice (road works, then winter conditions), whatever the number of zones.",
+        "fr": "De 15 à 120 minutes. Chaque lecture interroge deux fois le service du ministère (travaux, puis conditions hivernales), quel que soit le nombre de zones."
       },
       "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "default": 15,
+      "min": 15,
+      "max": 120
+    },
+    {
+      "key": "zone1",
+      "type": "section",
+      "label": {
+        "en": "Zone 1",
+        "fr": "Zone 1"
+      },
+      "description": {
+        "en": "A circle around a point: the road works in effect and the winter condition segments inside it are counted. Required.",
+        "fr": "Un cercle autour d'un point : les travaux en cours et les tronçons de conditions hivernales à l'intérieur sont comptés. Obligatoire."
+      }
+    },
+    {
+      "key": "zone1_name",
+      "type": "string",
+      "label": {
+        "en": "Name",
+        "fr": "Nom"
+      },
+      "description": {
+        "en": "Name of the device in Gladys (60 characters at most).",
+        "fr": "Nom de l'appareil dans Gladys (60 caractères au plus)."
+      },
+      "placeholder": {
+        "en": "e.g. Home",
+        "fr": "ex. Maison"
+      },
+      "required": false
+    },
+    {
+      "key": "zone1_latitude",
+      "type": "number",
+      "label": {
+        "en": "Latitude",
+        "fr": "Latitude"
+      },
+      "description": {
+        "en": "Center of the zone, in Québec (decimal degrees).",
+        "fr": "Centre de la zone, au Québec (degrés décimaux)."
+      },
+      "placeholder": {
+        "en": "e.g. 45.5017",
+        "fr": "ex. 45.5017"
+      },
+      "required": true,
+      "min": 44.9,
+      "max": 63
+    },
+    {
+      "key": "zone1_longitude",
+      "type": "number",
+      "label": {
+        "en": "Longitude",
+        "fr": "Longitude"
+      },
+      "description": {
+        "en": "Center of the zone (decimal degrees, negative: west).",
+        "fr": "Centre de la zone (degrés décimaux, négatif : ouest)."
+      },
+      "placeholder": {
+        "en": "e.g. -73.5673",
+        "fr": "ex. -73.5673"
+      },
+      "required": true,
+      "min": -80,
+      "max": -57
+    },
+    {
+      "key": "zone1_radius_km",
+      "type": "number",
+      "label": {
+        "en": "Radius (km)",
+        "fr": "Rayon (km)"
+      },
+      "description": {
+        "en": "From 1 to 300 km.",
+        "fr": "De 1 à 300 km."
+      },
+      "required": false,
+      "default": 20,
+      "min": 1,
+      "max": 300
+    },
+    {
+      "key": "zone1_roads",
+      "type": "string",
+      "label": {
+        "en": "Only these routes",
+        "fr": "Seulement ces routes"
+      },
+      "description": {
+        "en": "Optional: route numbers separated by commas (\"20, 40, 117\"; \"A-20\" or \"R-117\" work too). Works and segments without a route number are then left out. Empty: every road of the zone.",
+        "fr": "Facultatif : numéros de routes séparés par des virgules (« 20, 40, 117 » ; « A-20 » ou « R-117 » marchent aussi). Les travaux et tronçons sans numéro de route sont alors laissés de côté. Vide : toutes les routes de la zone."
+      },
+      "placeholder": {
+        "en": "e.g. 20, 40",
+        "fr": "ex. 20, 40"
+      },
+      "required": false
+    },
+    {
+      "key": "zone2",
+      "type": "section",
+      "label": {
+        "en": "Zone 2 (optional)",
+        "fr": "Zone 2 (facultative)"
+      },
+      "description": {
+        "en": "A circle around a point: the road works in effect and the winter condition segments inside it are counted. Leave the latitude and longitude empty to turn it off.",
+        "fr": "Un cercle autour d'un point : les travaux en cours et les tronçons de conditions hivernales à l'intérieur sont comptés. Laissez la latitude et la longitude vides pour la désactiver."
+      }
+    },
+    {
+      "key": "zone2_name",
+      "type": "string",
+      "label": {
+        "en": "Name",
+        "fr": "Nom"
+      },
+      "description": {
+        "en": "Name of the device in Gladys (60 characters at most).",
+        "fr": "Nom de l'appareil dans Gladys (60 caractères au plus)."
+      },
+      "placeholder": {
+        "en": "e.g. Commute",
+        "fr": "ex. Trajet"
+      },
+      "required": false
+    },
+    {
+      "key": "zone2_latitude",
+      "type": "number",
+      "label": {
+        "en": "Latitude",
+        "fr": "Latitude"
+      },
+      "description": {
+        "en": "Center of the zone, in Québec (decimal degrees).",
+        "fr": "Centre de la zone, au Québec (degrés décimaux)."
+      },
+      "placeholder": {
+        "en": "e.g. 46.8139",
+        "fr": "ex. 46.8139"
+      },
+      "required": false,
+      "min": 44.9,
+      "max": 63
+    },
+    {
+      "key": "zone2_longitude",
+      "type": "number",
+      "label": {
+        "en": "Longitude",
+        "fr": "Longitude"
+      },
+      "description": {
+        "en": "Center of the zone (decimal degrees, negative: west).",
+        "fr": "Centre de la zone (degrés décimaux, négatif : ouest)."
+      },
+      "placeholder": {
+        "en": "e.g. -71.208",
+        "fr": "ex. -71.208"
+      },
+      "required": false,
+      "min": -80,
+      "max": -57
+    },
+    {
+      "key": "zone2_radius_km",
+      "type": "number",
+      "label": {
+        "en": "Radius (km)",
+        "fr": "Rayon (km)"
+      },
+      "description": {
+        "en": "From 1 to 300 km.",
+        "fr": "De 1 à 300 km."
+      },
+      "required": false,
+      "default": 20,
+      "min": 1,
+      "max": 300
+    },
+    {
+      "key": "zone2_roads",
+      "type": "string",
+      "label": {
+        "en": "Only these routes",
+        "fr": "Seulement ces routes"
+      },
+      "description": {
+        "en": "Optional: route numbers separated by commas (\"20, 40, 117\"; \"A-20\" or \"R-117\" work too). Works and segments without a route number are then left out. Empty: every road of the zone.",
+        "fr": "Facultatif : numéros de routes séparés par des virgules (« 20, 40, 117 » ; « A-20 » ou « R-117 » marchent aussi). Les travaux et tronçons sans numéro de route sont alors laissés de côté. Vide : toutes les routes de la zone."
+      },
+      "placeholder": {
+        "en": "e.g. 20, 40",
+        "fr": "ex. 20, 40"
+      },
+      "required": false
+    },
+    {
+      "key": "zone3",
+      "type": "section",
+      "label": {
+        "en": "Zone 3 (optional)",
+        "fr": "Zone 3 (facultative)"
+      },
+      "description": {
+        "en": "A circle around a point: the road works in effect and the winter condition segments inside it are counted. Leave the latitude and longitude empty to turn it off.",
+        "fr": "Un cercle autour d'un point : les travaux en cours et les tronçons de conditions hivernales à l'intérieur sont comptés. Laissez la latitude et la longitude vides pour la désactiver."
+      }
+    },
+    {
+      "key": "zone3_name",
+      "type": "string",
+      "label": {
+        "en": "Name",
+        "fr": "Nom"
+      },
+      "description": {
+        "en": "Name of the device in Gladys (60 characters at most).",
+        "fr": "Nom de l'appareil dans Gladys (60 caractères au plus)."
+      },
+      "placeholder": {
+        "en": "e.g. Cabin",
+        "fr": "ex. Chalet"
+      },
+      "required": false
+    },
+    {
+      "key": "zone3_latitude",
+      "type": "number",
+      "label": {
+        "en": "Latitude",
+        "fr": "Latitude"
+      },
+      "description": {
+        "en": "Center of the zone, in Québec (decimal degrees).",
+        "fr": "Centre de la zone, au Québec (degrés décimaux)."
+      },
+      "placeholder": {
+        "en": "e.g. 46.0597",
+        "fr": "ex. 46.0597"
+      },
+      "required": false,
+      "min": 44.9,
+      "max": 63
+    },
+    {
+      "key": "zone3_longitude",
+      "type": "number",
+      "label": {
+        "en": "Longitude",
+        "fr": "Longitude"
+      },
+      "description": {
+        "en": "Center of the zone (decimal degrees, negative: west).",
+        "fr": "Centre de la zone (degrés décimaux, négatif : ouest)."
+      },
+      "placeholder": {
+        "en": "e.g. -74.2849",
+        "fr": "ex. -74.2849"
+      },
+      "required": false,
+      "min": -80,
+      "max": -57
+    },
+    {
+      "key": "zone3_radius_km",
+      "type": "number",
+      "label": {
+        "en": "Radius (km)",
+        "fr": "Rayon (km)"
+      },
+      "description": {
+        "en": "From 1 to 300 km.",
+        "fr": "De 1 à 300 km."
+      },
+      "required": false,
+      "default": 20,
+      "min": 1,
+      "max": 300
+    },
+    {
+      "key": "zone3_roads",
+      "type": "string",
+      "label": {
+        "en": "Only these routes",
+        "fr": "Seulement ces routes"
+      },
+      "description": {
+        "en": "Optional: route numbers separated by commas (\"20, 40, 117\"; \"A-20\" or \"R-117\" work too). Works and segments without a route number are then left out. Empty: every road of the zone.",
+        "fr": "Facultatif : numéros de routes séparés par des virgules (« 20, 40, 117 » ; « A-20 » ou « R-117 » marchent aussi). Les travaux et tronçons sans numéro de route sont alors laissés de côté. Vide : toutes les routes de la zone."
+      },
+      "placeholder": {
+        "en": "e.g. 20, 40",
+        "fr": "ex. 20, 40"
+      },
+      "required": false
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
-    },
-    {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
+      "key": "test",
+      "label": {
+        "en": "Show the last read",
+        "fr": "Voir la dernière lecture"
+      },
+      "timeout_seconds": 10
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "new_works",
+      "label": {
+        "en": "New road works in a zone",
+        "fr": "Nouveaux travaux dans une zone"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "Road works in effect appear in a zone for the first time (started or updated within the last 24 hours). Not fired by the first read of a zone.",
+        "fr": "Des travaux en cours apparaissent pour la première fois dans une zone (commencés ou mis à jour dans les dernières 24 heures). Pas déclenché par la première lecture d'une zone."
       },
       "fields": [
         {
           "key": "device",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
+          "label": {
+            "en": "Zone",
+            "fr": "Zone"
+          }
         },
         {
-          "key": "target",
+          "key": "severity",
           "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
+          "label": {
+            "en": "Restriction",
+            "fr": "Entrave"
+          },
           "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
+            {
+              "value": "major",
+              "label": {
+                "en": "Major",
+                "fr": "Majeure"
+              }
+            },
+            {
+              "value": "minor",
+              "label": {
+                "en": "Minor",
+                "fr": "Mineure"
+              }
+            }
           ]
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "route",
+          "type": "number",
+          "label": {
+            "en": "Route number",
+            "fr": "Numéro de route"
+          }
+        },
+        {
+          "key": "title",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
-        }
-      ]
-    }
-  ],
-  "scene_actions": [
-    {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
-      },
-      "timeout_seconds": 15,
-      "fields": [
+          "label": {
+            "en": "Works (French)",
+            "fr": "Travaux (français)"
+          }
+        },
         {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ],
-      "outputs": [
+          "key": "title_en",
+          "type": "string",
+          "label": {
+            "en": "Works (English)",
+            "fr": "Travaux (anglais)"
+          }
+        },
         {
-          "key": "signalled",
+          "key": "place",
+          "type": "string",
+          "label": {
+            "en": "Location (French)",
+            "fr": "Localisation (français)"
+          }
+        },
+        {
+          "key": "impact",
+          "type": "string",
+          "label": {
+            "en": "Restriction (French)",
+            "fr": "Entrave (français)"
+          }
+        },
+        {
+          "key": "direction",
+          "type": "string",
+          "label": {
+            "en": "Direction (French)",
+            "fr": "Direction (français)"
+          }
+        },
+        {
+          "key": "restriction_type",
+          "type": "string",
+          "label": {
+            "en": "Restriction type (French)",
+            "fr": "Type d'entrave (français)"
+          }
+        },
+        {
+          "key": "severity",
+          "type": "string",
+          "label": {
+            "en": "Restriction (major or minor)",
+            "fr": "Entrave (major ou minor)"
+          }
+        },
+        {
+          "key": "major",
           "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "label": {
+            "en": "Major restriction",
+            "fr": "Entrave majeure"
+          }
+        },
+        {
+          "key": "start",
+          "type": "string",
+          "label": {
+            "en": "Start (UTC, ISO 8601)",
+            "fr": "Début (UTC, ISO 8601)"
+          }
+        },
+        {
+          "key": "end",
+          "type": "string",
+          "label": {
+            "en": "End (UTC, ISO 8601)",
+            "fr": "Fin (UTC, ISO 8601)"
+          }
+        },
+        {
+          "key": "distance_km",
+          "type": "number",
+          "label": {
+            "en": "Distance from the zone center (km)",
+            "fr": "Distance au centre de la zone (km)"
+          }
+        },
+        {
+          "key": "works_id",
+          "type": "string",
+          "label": {
+            "en": "Ministry works id",
+            "fr": "Identifiant des travaux du ministère"
+          }
         }
       ]
-    }
-  ],
-  "widgets": [
-    {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
-      },
-      "icon": "activity",
-      "action_timeout_seconds": 15
     }
   ]
 }

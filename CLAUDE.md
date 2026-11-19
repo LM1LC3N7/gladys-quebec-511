@@ -15,9 +15,9 @@ its only runtime dependency. It started from the official JavaScript template.
 
 ```bash
 npm install
-npm test                                  # node --test, the built-in runner
-node --test test/devices.test.js          # one file
-node --test --test-name-pattern "plug"    # tests whose name matches
+npm test                                  # node --test --test-timeout=60000
+node --test test/app.test.js              # one file
+node --test --test-name-pattern "429"     # tests whose name matches
 npm run lint                              # ESLint
 npm run format:check                      # Prettier, as the CI runs it
 npm run format                            # Prettier, fix in place
@@ -32,17 +32,25 @@ pushing.
 
 ```
 index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
-src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
+src/app.js                        Quebec511App: rounds (2 layers), pace (5 s gap, pauses), status, scene trigger
+src/wfs.js                        one bounded GET of the MTMD WFS, strict reading of the features, Québec local dates
+src/zone.js                       what a zone sees: works in effect, winter segments, in the circle, on the routes; summary
+src/geo.js                        bounding box of a zone and of all zones, distance to a point or a line
+src/config.js                     strict reading of the configuration (manifest `config_schema`)
+src/devices.js                    one read-only device per zone (id = slot)
+src/i18n.js                       every text, English and French
+src/store.js                      /data state (last attempt, pause, works seen), never overwritten if unreadable
+gladys-assistant-integration.json manifest: name, config_schema, actions, scene trigger, image...
 docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+test/                             node --test, fake Gladys of the SDK, virtual clock (test/kit), real fixtures
+scripts/cover.mjs                 generates cover.png (800x534), plain Node
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
+
+Rules kept by the code: one request at a time, 5 s between two starts, two requests a round (works, conditions)
+for the box of all zones; 15 min at least between rounds, never sooner (restart, reconnection, unchanged
+configuration, Discovery, test button); 429/5xx/other status pause kept in /data; "in effect" judged against the
+`Date` header, source dates read as Québec time; each layer published on its own, nothing for a failed read.
 
 ## Rules
 
@@ -56,8 +64,8 @@ test/                             node --test, against the SDK's fake Gladys (in
   writable volume. Never log tokens, passwords or API keys.
 - **Versions belong to the Release workflow** (Actions → Release). Never edit
   `version` in `package.json` or in the manifest, nor the `docker_image` tag,
-  by hand — except on the README's hand-pushed tag path, which bumps all three
-  together before tagging. `test/manifest.test.js` checks they agree.
+  by hand (0.1.0 was set by hand once, see TODO.md). `test/manifest.test.js`
+  checks they agree.
 - **Changelog.** Every user-visible change adds a line under `## [Unreleased]`
   in `CHANGELOG.md` (`### Added`, `Changed`, `Fixed`, `Removed`, `Security`).
   Never write a version heading: the Release workflow moves the section, and it
@@ -67,7 +75,7 @@ test/                             node --test, against the SDK's fake Gladys (in
   catalog `description` holds 10 to 100 characters per language. A field the
   older cores do not know needs a higher `gladys_version` minimum
   (`categories`: 4.86.0; `widgets`, `scene_triggers`, `scene_actions`,
-  `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
+  `type: "provider"`: 5.1.0; `countries`: 5.3.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
 - **User-facing text** is bilingual (English and French): action messages,

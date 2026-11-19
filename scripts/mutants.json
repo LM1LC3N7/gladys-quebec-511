@@ -1,0 +1,176 @@
+[
+  {
+    "name": "cut answer refused",
+    "file": "src/wfs.js",
+    "from": "json.numberMatched === json.features.length",
+    "to": "true"
+  },
+  {
+    "name": "mostly unreadable refused",
+    "file": "src/wfs.js",
+    "from": "skipped * 2 > json.features.length",
+    "to": "false"
+  },
+  {
+    "name": "not started yet",
+    "file": "src/wfs.js",
+    "from": "work.start !== null && work.start > at",
+    "to": "false"
+  },
+  {
+    "name": "already over",
+    "file": "src/wfs.js",
+    "from": "work.end !== null && work.end <= at",
+    "to": "false"
+  },
+  {
+    "name": "bare is not winter",
+    "file": "src/wfs.js",
+    "from": "winter: surface === null ? null : !BARE_CODES.includes(surface)",
+    "to": "winter: surface === null ? null : true"
+  },
+  {
+    "name": "unknown surface code",
+    "file": "src/wfs.js",
+    "from": "surface = SURFACE_CODES.includes(p.CodeEtatChaussee) ? p.CodeEtatChaussee : null",
+    "to": "surface = p.CodeEtatChaussee || null"
+  },
+  {
+    "name": "major restriction",
+    "file": "src/wfs.js",
+    "from": "/^majeure\\b/i",
+    "to": "/^m/i"
+  },
+  {
+    "name": "fall back: first occurrence",
+    "file": "src/wfs.js",
+    "from": "Math.min(...fits)",
+    "to": "Math.max(...fits)"
+  },
+  {
+    "name": "spring gap: offset before",
+    "file": "src/wfs.js",
+    "from": ": guess - before;",
+    "to": ": guess - after;"
+  },
+  {
+    "name": "json content type",
+    "file": "src/wfs.js",
+    "from": "if (!/\\bjson\\b/i.test(type))",
+    "to": "if (false)"
+  },
+  {
+    "name": "body cut",
+    "file": "src/wfs.js",
+    "from": "if (size > max) {",
+    "to": "if (false) {"
+  },
+  {
+    "name": "refusal pauses",
+    "file": "src/app.js",
+    "from": "if (!result.ok && PAUSING.includes(result.kind)) {",
+    "to": "if (false) {"
+  },
+  {
+    "name": "success lifts the pause",
+    "file": "src/app.js",
+    "from": "        if (this.persisted.pause) this.persisted.pause = NO_PAUSE();\n",
+    "to": "\n"
+  },
+  {
+    "name": "winter only when read",
+    "file": "src/app.js",
+    "from": "if (winter !== null) {",
+    "to": "if (true) {"
+  },
+  {
+    "name": "server date sanity",
+    "file": "src/app.js",
+    "from": "Math.abs(at - this.now()) > DATE_SANITY",
+    "to": "false"
+  },
+  {
+    "name": "fresh within 24 h",
+    "file": "src/app.js",
+    "from": "at - latest <= FRESH_EVENT",
+    "to": "true"
+  },
+  {
+    "name": "moved zone baseline",
+    "file": "src/app.js",
+    "from": "const baseline = !previous || previous.fingerprint !== fingerprint;",
+    "to": "const baseline = !previous;"
+  },
+  {
+    "name": "20 scene events at most",
+    "file": "src/app.js",
+    "from": "fresh.slice(0, SCENE_EVENTS_PER_READ)",
+    "to": "fresh"
+  },
+  {
+    "name": "gap between requests",
+    "file": "src/app.js",
+    "from": "const wait = this.lastRequestMono + REQUEST_GAP - this.monotonic();",
+    "to": "const wait = 0;"
+  },
+  {
+    "name": "pause holds a queued request",
+    "file": "src/app.js",
+    "from": "    if (this.pausedFor() > 0) return { ok: false, kind: 'paused' };\n",
+    "to": ""
+  },
+  {
+    "name": "future /data date",
+    "file": "src/app.js",
+    "from": "else if (isTime(last) && last > this.now()) {",
+    "to": "else if (false) {"
+  },
+  {
+    "name": "attempt saved before the request",
+    "file": "src/app.js",
+    "from": "    this.persisted.lastAttemptAt = this.now();\n    const saved = await this.persist();",
+    "to": "    const saved = true;"
+  },
+  {
+    "name": "route filter",
+    "file": "src/zone.js",
+    "from": "zone.roads.length === 0 || zone.roads.includes(route)",
+    "to": "true"
+  },
+  {
+    "name": "works circle",
+    "file": "src/zone.js",
+    "from": "    const distance = distanceKm(zone, work.lines);\n    if (!(distance <= zone.radiusKm)) continue;",
+    "to": "    const distance = distanceKm(zone, work.lines);"
+  },
+  {
+    "name": "segments circle",
+    "file": "src/zone.js",
+    "from": "    const distance = distanceKm(zone, segment.lines);\n    if (!(distance <= zone.radiusKm)) continue;",
+    "to": "    const distance = distanceKm(zone, segment.lines);"
+  },
+  {
+    "name": "in effect filter",
+    "file": "src/zone.js",
+    "from": "    if (!inEffect(work, at)) continue;\n",
+    "to": ""
+  },
+  {
+    "name": "Québec envelope",
+    "file": "src/config.js",
+    "from": "lat >= QC_ENVELOPE.minLat &&",
+    "to": "true &&"
+  },
+  {
+    "name": "route numbers only",
+    "file": "src/config.js",
+    "from": "    if (!(number > 0)) return { error: 'roads_invalid' };\n",
+    "to": ""
+  },
+  {
+    "name": "interval at least 15 min",
+    "file": "src/config.js",
+    "from": "refreshMinutes < REFRESH_MIN ||",
+    "to": "false ||"
+  }
+]

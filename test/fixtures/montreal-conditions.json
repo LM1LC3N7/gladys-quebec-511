@@ -1,0 +1,2594 @@
+{
+  "date": "Sun, 15 Nov 2026 12:42:35 GMT",
+  "body": {
+    "type": "FeatureCollection",
+    "numberMatched": 64,
+    "name": "conditions_routieres",
+    "bbox": [-74.335361, 45.008851, -72.678891, 45.920322],
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3481,
+          "NumeroRoute": 148,
+          "NomRoute": "route 148",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Saint-Eustache, montée Renaud",
+          "LocalisationFinFR": "Saint-Eustache",
+          "LocalisationDebutEN": "Saint-Eustache, montée Renaud",
+          "LocalisationFinEN": "Saint-Eustache",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.977786, 45.568157, -73.910195, 45.586937],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.977786, 45.580778],
+            [-73.932677, 45.586829],
+            [-73.929234, 45.586763],
+            [-73.927001, 45.586063],
+            [-73.92516, 45.584836],
+            [-73.919133, 45.578792],
+            [-73.918502, 45.578038],
+            [-73.916174, 45.57569],
+            [-73.91418, 45.573799],
+            [-73.910883, 45.570359],
+            [-73.910754, 45.568787],
+            [-73.910195, 45.568157]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3491,
+          "NumeroRoute": 640,
+          "NomRoute": "autoroute 640",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Jonction des autoroutes 25 et 640 à Terrebonne",
+          "LocalisationFinFR": "Charlemagne",
+          "LocalisationDebutEN": "Junction of highways 25 and 640 in Terrebonne",
+          "LocalisationFinEN": "Charlemagne",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:10:09"
+        },
+        "bbox": [-73.61522, 45.714726, -73.491487, 45.731268],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.61522, 45.719631],
+            [-73.575854, 45.714843],
+            [-73.571424, 45.714838],
+            [-73.56988, 45.715057],
+            [-73.568074, 45.715461],
+            [-73.512013, 45.730756],
+            [-73.508694, 45.731268],
+            [-73.507169, 45.731199],
+            [-73.505663, 45.730938],
+            [-73.504262, 45.730505],
+            [-73.502104, 45.729334],
+            [-73.491487, 45.721471]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3551,
+          "NumeroRoute": 125,
+          "NomRoute": "route 125",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Pont Pie-IX à Montréal",
+          "LocalisationFinFR": "Jonction de l'autoroute 440 et de la route 125 à Laval",
+          "LocalisationDebutEN": "Pie-IX Bridge in Montréal",
+          "LocalisationFinEN": "Junction of highway 440 and route 125 in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.668789, 45.59597, -73.642562, 45.617903],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.642562, 45.59597],
+            [-73.643945, 45.597327],
+            [-73.650122, 45.601405],
+            [-73.651767, 45.602653],
+            [-73.659807, 45.60982],
+            [-73.663404, 45.612863],
+            [-73.665861, 45.615241],
+            [-73.668789, 45.617903]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3581,
+          "NumeroRoute": 40,
+          "NomRoute": "autoroute 40",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Pont Charles-De Gaulle à Montréal",
+          "LocalisationFinFR": "Jonction des autoroutes 31 et 40 à Lavaltrie",
+          "LocalisationDebutEN": "Charles-De Gaulle Bridge in Montréal",
+          "LocalisationFinEN": "Junction of highways 31 and 40 in Lavaltrie",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.508588, 45.706856, -73.325872, 45.920322],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.508588, 45.706856],
+            [-73.507826, 45.716267],
+            [-73.490034, 45.732884],
+            [-73.48785, 45.734113],
+            [-73.484826, 45.735014],
+            [-73.470333, 45.736387],
+            [-73.467191, 45.737585],
+            [-73.457995, 45.74647],
+            [-73.400014, 45.8144],
+            [-73.39151, 45.826844],
+            [-73.332898, 45.913268],
+            [-73.325872, 45.920322]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3591,
+          "NumeroRoute": 440,
+          "NomRoute": "Autoroute Dufferin-Montmorency",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Jonction des autoroutes 13 et 440",
+          "LocalisationFinFR": "Jonction de l'autoroute 440 et de la route 125 à Laval",
+          "LocalisationDebutEN": "Junction of highways 13 and 440",
+          "LocalisationFinEN": "Junction of highway 440 and route 125 in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.818548, 45.551162, -73.668742, 45.617749],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.818548, 45.551162],
+            [-73.767236, 45.566713],
+            [-73.763818, 45.567966],
+            [-73.760768, 45.569594],
+            [-73.734774, 45.585917],
+            [-73.730672, 45.587758],
+            [-73.715791, 45.592821],
+            [-73.711064, 45.59506],
+            [-73.707911, 45.597461],
+            [-73.702366, 45.602467],
+            [-73.698711, 45.604463],
+            [-73.668742, 45.617749]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3601,
+          "NumeroRoute": 640,
+          "NomRoute": "autoroute 640",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Saint-Eustache",
+          "LocalisationFinFR": "Bois-des-Filion",
+          "LocalisationDebutEN": "Saint-Eustache",
+          "LocalisationFinEN": "Bois-des-Filion",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.909437, 45.568841, -73.765146, 45.672287],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.909437, 45.568841],
+            [-73.886321, 45.577026],
+            [-73.879442, 45.580295],
+            [-73.856852, 45.606555],
+            [-73.8497, 45.619672],
+            [-73.848056, 45.622095],
+            [-73.83559, 45.629116],
+            [-73.821583, 45.632315],
+            [-73.8045, 45.647107],
+            [-73.798549, 45.655831],
+            [-73.795442, 45.65781],
+            [-73.765146, 45.672287]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3611,
+          "NumeroRoute": 640,
+          "NomRoute": "autoroute 640",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Bois-des-Filion",
+          "LocalisationFinFR": "Jonction des autoroutes 25 et 640 à Terrebonne",
+          "LocalisationDebutEN": "Bois-des-Filion",
+          "LocalisationFinEN": "Junction of highways 25 and 640 in Terrebonne",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:10:09"
+        },
+        "bbox": [-73.765146, 45.672287, -73.61522, 45.725822],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.765146, 45.672287],
+            [-73.763098, 45.673655],
+            [-73.761665, 45.675604],
+            [-73.760209, 45.686136],
+            [-73.759282, 45.687907],
+            [-73.757826, 45.689261],
+            [-73.756507, 45.690035],
+            [-73.694806, 45.721877],
+            [-73.690646, 45.723195],
+            [-73.674008, 45.725369],
+            [-73.667052, 45.725822],
+            [-73.61522, 45.719631]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3641,
+          "NumeroRoute": 13,
+          "NomRoute": "autoroute 13",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Pont Louis-Bisson à Laval",
+          "LocalisationFinFR": "Jonction des autoroutes 13 et 640",
+          "LocalisationDebutEN": "Louis-Bisson Bridge in Laval",
+          "LocalisationFinEN": "Junction of highways 13 and 640",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.863562, 45.513678, -73.766722, 45.599704],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.766722, 45.513678],
+            [-73.77441, 45.521528],
+            [-73.791519, 45.53862],
+            [-73.824221, 45.568706],
+            [-73.840081, 45.583156],
+            [-73.844182, 45.587139],
+            [-73.85013, 45.592601],
+            [-73.851911, 45.593986],
+            [-73.853887, 45.595184],
+            [-73.862905, 45.599326],
+            [-73.863562, 45.599704]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3651,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Pont Médéric-Martin à Laval",
+          "LocalisationFinFR": "Sainte-Thérèse",
+          "LocalisationDebutEN": "Médéric-Martin Bridge in Laval",
+          "LocalisationFinEN": "Sainte-Thérèse",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.863862, 45.542476, -73.714846, 45.6437],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.714846, 45.542476],
+            [-73.730394, 45.556856],
+            [-73.756285, 45.5804],
+            [-73.760726, 45.581419],
+            [-73.767155, 45.580334],
+            [-73.771492, 45.58012],
+            [-73.774938, 45.580866],
+            [-73.800112, 45.591532],
+            [-73.802368, 45.593621],
+            [-73.806181, 45.605335],
+            [-73.823898, 45.617568],
+            [-73.863862, 45.6437]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3661,
+          "NumeroRoute": 25,
+          "NomRoute": "autoroute 25",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Jonction de l'autoroute 25 et de la route 344 à Terrebonne",
+          "LocalisationFinFR": "Saint-Roch-de-l'Achigan",
+          "LocalisationDebutEN": "Junction of highway 25 and route 344 in Terrebonne",
+          "LocalisationFinEN": "Saint-Roch-de-l'Achigan",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.652234, 45.699754, -73.573317, 45.813355],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.651802, 45.699754],
+            [-73.651698, 45.705128],
+            [-73.65044, 45.706564],
+            [-73.646905, 45.708131],
+            [-73.633181, 45.710714],
+            [-73.625337, 45.713583],
+            [-73.610374, 45.722578],
+            [-73.580676, 45.759905],
+            [-73.577805, 45.764865],
+            [-73.573317, 45.778468],
+            [-73.574069, 45.781244],
+            [-73.594965, 45.813355]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3671,
+          "NumeroRoute": 640,
+          "NomRoute": "autoroute 640",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Saint-Joseph-du-Lac",
+          "LocalisationFinFR": "Saint-Eustache",
+          "LocalisationDebutEN": "Saint-Joseph-du-Lac",
+          "LocalisationFinEN": "Saint-Eustache",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.995946, 45.501714, -73.909437, 45.568841],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.995946, 45.501714],
+            [-73.991489, 45.51623],
+            [-73.989559, 45.518452],
+            [-73.961821, 45.537316],
+            [-73.957379, 45.538639],
+            [-73.921493, 45.544147],
+            [-73.919734, 45.545186],
+            [-73.917823, 45.547834],
+            [-73.920166, 45.558926],
+            [-73.919386, 45.562405],
+            [-73.918057, 45.563987],
+            [-73.909437, 45.568841]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3722,
+          "NumeroRoute": 25,
+          "NomRoute": "autoroute 25",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Jonction des autoroutes 25 et 440 à Laval",
+          "LocalisationFinFR": "Jonction de l'autoroute 25 et de la route 344 à Terrebonne",
+          "LocalisationDebutEN": "Junction of highways 25 and 440 in Laval",
+          "LocalisationFinEN": "Junction of highway 25 and route 344 in Terrebonne",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.651802, 45.663841, -73.648755, 45.699754],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.648755, 45.663841],
+            [-73.649762, 45.666971],
+            [-73.650053, 45.668653],
+            [-73.650093, 45.669882],
+            [-73.649684, 45.682589],
+            [-73.64972, 45.684477],
+            [-73.651802, 45.699754]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3721,
+          "NumeroRoute": 440,
+          "NomRoute": "Autoroute Dufferin-Montmorency",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Jonction de l'autoroute 440 et de la route 125 à Laval",
+          "LocalisationFinFR": "Jonction des autoroutes 25 et 440 à Laval",
+          "LocalisationDebutEN": "Junction of highway 440 and route 125 in Laval",
+          "LocalisationFinEN": "Junction of highways 25 and 440 in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.668742, 45.617749, -73.645247, 45.663841],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.668742, 45.617749],
+            [-73.667267, 45.618585],
+            [-73.663918, 45.621212],
+            [-73.662841, 45.622423],
+            [-73.647434, 45.644286],
+            [-73.646894, 45.645313],
+            [-73.6453, 45.650872],
+            [-73.645247, 45.652067],
+            [-73.645638, 45.656724],
+            [-73.646022, 45.657933],
+            [-73.647723, 45.661159],
+            [-73.648755, 45.663841]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 9411,
+          "NumeroRoute": 138,
+          "NomRoute": "route 138",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Pont Honoré-Mercier Rive-Sud",
+          "LocalisationFinFR": "Pont Honoré-Mercier à Montréal",
+          "LocalisationDebutEN": "Honoré-Mercier Bridge Rive-Sud",
+          "LocalisationFinEN": "Honoré-Mercier Bridge in Montréal",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.66793, 45.403684, -73.651664, 45.422354],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.66793, 45.403684],
+            [-73.660812, 45.40564],
+            [-73.660223, 45.405903],
+            [-73.659618, 45.40637],
+            [-73.659203, 45.407062],
+            [-73.659109, 45.408555],
+            [-73.658964, 45.409125],
+            [-73.656596, 45.41378],
+            [-73.651937, 45.421463],
+            [-73.651664, 45.422354]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3501,
+          "NumeroRoute": 13,
+          "NomRoute": "autoroute 13",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Jonction des autoroutes 13 et 20",
+          "LocalisationFinFR": "Pont Louis-Bisson à Laval",
+          "LocalisationDebutEN": "Junction of highways 13 and 20",
+          "LocalisationFinEN": "Louis-Bisson Bridge in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:35:14"
+        },
+        "bbox": [-73.766722, 45.449139, -73.695606, 45.513678],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.697023, 45.449139],
+            [-73.69709, 45.45699],
+            [-73.695606, 45.463508],
+            [-73.695937, 45.46502],
+            [-73.69694, 45.466408],
+            [-73.705339, 45.47178],
+            [-73.710126, 45.475033],
+            [-73.719463, 45.480419],
+            [-73.724566, 45.482691],
+            [-73.730126, 45.486072],
+            [-73.754799, 45.501954],
+            [-73.766722, 45.513678]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3511,
+          "NumeroRoute": 10,
+          "NomRoute": "autoroute 10",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Île des Soeurs",
+          "LocalisationFinFR": "Pont Samuel-De Champlain Rive-Sud",
+          "LocalisationDebutEN": "Île des Soeurs",
+          "LocalisationFinEN": "Samuel-De Champlain Bridge Rive-Sud",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.535057, 45.465468, -73.483129, 45.470111],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.535057, 45.470111],
+            [-73.527166, 45.469906],
+            [-73.521694, 45.469618],
+            [-73.516236, 45.46922],
+            [-73.510796, 45.468712],
+            [-73.497489, 45.467298],
+            [-73.483129, 45.465468]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3512,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Île des Soeurs",
+          "LocalisationFinFR": "Échangeur Décarie",
+          "LocalisationDebutEN": "Île des Soeurs",
+          "LocalisationFinEN": "Décarie Interchange",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.664712, 45.464959, -73.527033, 45.505788],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.527033, 45.470218],
+            [-73.561233, 45.47201],
+            [-73.571687, 45.475016],
+            [-73.577152, 45.472019],
+            [-73.580938, 45.466779],
+            [-73.592753, 45.464982],
+            [-73.596779, 45.466135],
+            [-73.610984, 45.473423],
+            [-73.618448, 45.477297],
+            [-73.645912, 45.491209],
+            [-73.662302, 45.500394],
+            [-73.663985, 45.505788]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3521,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Échangeur des Laurentides",
+          "LocalisationFinFR": "Pont Médéric-Martin à Laval",
+          "LocalisationDebutEN": "Des Laurentides Interchange",
+          "LocalisationFinEN": "Médéric-Martin Bridge in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.714846, 45.528375, -73.656429, 45.542476],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.656429, 45.528375],
+            [-73.6712, 45.532531],
+            [-73.67439, 45.532715],
+            [-73.68495, 45.530553],
+            [-73.687866, 45.530244],
+            [-73.690348, 45.530416],
+            [-73.693259, 45.531166],
+            [-73.701302, 45.535923],
+            [-73.704138, 45.537131],
+            [-73.708411, 45.538207],
+            [-73.71332, 45.541119],
+            [-73.714846, 45.542476]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3531,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "L'Île-Perrot",
+          "LocalisationFinFR": "Dorval",
+          "LocalisationDebutEN": "L'Île-Perrot",
+          "LocalisationFinEN": "Dorval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.957339, 45.4013, -73.741965, 45.44931],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.957339, 45.4013],
+            [-73.951057, 45.406943],
+            [-73.943328, 45.408962],
+            [-73.916698, 45.418671],
+            [-73.899109, 45.424535],
+            [-73.861808, 45.43061],
+            [-73.822196, 45.440833],
+            [-73.808391, 45.443932],
+            [-73.79642, 45.448311],
+            [-73.788857, 45.44922],
+            [-73.752584, 45.448645],
+            [-73.741965, 45.447071]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3571,
+          "NumeroRoute": 40,
+          "NomRoute": "autoroute 40",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Kirkland",
+          "LocalisationFinFR": "Jonction des autoroutes 40 et 520",
+          "LocalisationDebutEN": "Kirkland",
+          "LocalisationFinEN": "Junction of highways 40 and 520",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.859031, 45.45234, -73.681161, 45.49484],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.859031, 45.45234],
+            [-73.85569, 45.453527],
+            [-73.839592, 45.457092],
+            [-73.8071, 45.473259],
+            [-73.776169, 45.487951],
+            [-73.771181, 45.489167],
+            [-73.746785, 45.490669],
+            [-73.712828, 45.488799],
+            [-73.708531, 45.489082],
+            [-73.693821, 45.493545],
+            [-73.689942, 45.494375],
+            [-73.681161, 45.49484]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3622,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Dorval",
+          "LocalisationFinFR": "Échangeur Turcot",
+          "LocalisationDebutEN": "Dorval",
+          "LocalisationFinEN": "Turcot Interchange",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.741965, 45.441945, -73.611718, 45.462535],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.741965, 45.447071],
+            [-73.73991, 45.447304],
+            [-73.733686, 45.448611],
+            [-73.685017, 45.447348],
+            [-73.670747, 45.446934],
+            [-73.66498, 45.444839],
+            [-73.657751, 45.442603],
+            [-73.651514, 45.441945],
+            [-73.64903, 45.442186],
+            [-73.631693, 45.451116],
+            [-73.620153, 45.458896],
+            [-73.611718, 45.462535]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3621,
+          "NumeroRoute": 138,
+          "NomRoute": "route 138",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Pont Honoré-Mercier à Montréal",
+          "LocalisationFinFR": "Échangeur Saint-Pierre",
+          "LocalisationDebutEN": "Honoré-Mercier Bridge in Montréal",
+          "LocalisationFinEN": "Saint-Pierre Interchange",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.651662, 45.422363, -73.644287, 45.444157],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.651662, 45.422363],
+            [-73.651283, 45.424295],
+            [-73.649388, 45.428815],
+            [-73.649256, 45.429357],
+            [-73.649393, 45.43027],
+            [-73.650229, 45.431712],
+            [-73.649883, 45.436952],
+            [-73.650161, 45.440035],
+            [-73.650113, 45.440649],
+            [-73.649768, 45.44125],
+            [-73.649157, 45.44174],
+            [-73.644287, 45.444157]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3631,
+          "NumeroRoute": 40,
+          "NomRoute": "autoroute 40",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Montréal arrondissement Saint-Léonard",
+          "LocalisationFinFR": "Pont Charles-De Gaulle à Montréal",
+          "LocalisationDebutEN": "Montréal Saint-Léonard borough",
+          "LocalisationFinEN": "Charles-De Gaulle Bridge in Montréal",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:30:42"
+        },
+        "bbox": [-73.578258, 45.593414, -73.508588, 45.706856],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.578258, 45.593414],
+            [-73.573282, 45.596926],
+            [-73.566515, 45.603769],
+            [-73.565142, 45.605302],
+            [-73.563751, 45.607786],
+            [-73.520014, 45.657333],
+            [-73.518149, 45.660697],
+            [-73.517854, 45.662746],
+            [-73.51918, 45.67051],
+            [-73.519063, 45.673013],
+            [-73.509136, 45.695174],
+            [-73.508588, 45.706856]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3681,
+          "NumeroRoute": 40,
+          "NomRoute": "autoroute 40",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Jonction des autoroutes 40 et 520",
+          "LocalisationFinFR": "Montréal arrondissement Saint-Léonard",
+          "LocalisationDebutEN": "Junction of highways 40 and 520",
+          "LocalisationFinEN": "Montréal Saint-Léonard borough",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.681161, 45.49484, -73.578258, 45.593414],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.681161, 45.49484],
+            [-73.676728, 45.495558],
+            [-73.66844, 45.501395],
+            [-73.665417, 45.503009],
+            [-73.664543, 45.504985],
+            [-73.652401, 45.52428],
+            [-73.648405, 45.531],
+            [-73.635223, 45.548936],
+            [-73.630042, 45.550372],
+            [-73.611345, 45.558772],
+            [-73.607549, 45.561495],
+            [-73.578258, 45.593414]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3691,
+          "NumeroRoute": 136,
+          "NomRoute": "route 136",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Échangeur Turcot",
+          "LocalisationFinFR": "Pont Jacques-Cartier à Montréal",
+          "LocalisationDebutEN": "Turcot Interchange",
+          "LocalisationFinEN": "Jacques-Cartier Bridge in Montréal",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.611718, 45.462535, -73.549616, 45.517532],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.611718, 45.462535],
+            [-73.601508, 45.46704],
+            [-73.599124, 45.468919],
+            [-73.594914, 45.476601],
+            [-73.593362, 45.47844],
+            [-73.577565, 45.488769],
+            [-73.570969, 45.493538],
+            [-73.564983, 45.496343],
+            [-73.563878, 45.497867],
+            [-73.563264, 45.501015],
+            [-73.558926, 45.506274],
+            [-73.549616, 45.517532]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3711,
+          "NumeroRoute": 25,
+          "NomRoute": "autoroute 25",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Jonction de l'autoroute 25 et du boulevard Henri-Bourassa à Montréal",
+          "LocalisationFinFR": "Jonction des autoroutes 25 et 440 à Laval",
+          "LocalisationDebutEN": "Junction of highway 25 and boulevard Henri-Bourassa in Montréal",
+          "LocalisationFinEN": "Junction of highways 25 and 440 in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:01:17"
+        },
+        "bbox": [-73.648908, 45.614317, -73.591078, 45.663813],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.591078, 45.614317],
+            [-73.595531, 45.615802],
+            [-73.598621, 45.617529],
+            [-73.624134, 45.641416],
+            [-73.63335, 45.64942],
+            [-73.636169, 45.65146],
+            [-73.637647, 45.652308],
+            [-73.644399, 45.656149],
+            [-73.645661, 45.657349],
+            [-73.646256, 45.65803],
+            [-73.648031, 45.661034],
+            [-73.648908, 45.663813]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 10811,
+          "NumeroRoute": 520,
+          "NomRoute": "autoroute 520",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Dorval",
+          "LocalisationFinFR": "Jonction des autoroutes 40 et 520",
+          "LocalisationDebutEN": "Dorval",
+          "LocalisationFinEN": "Junction of highways 40 and 520",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.741867, 45.447676, -73.676875, 45.494832],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.740968, 45.447676],
+            [-73.741805, 45.448252],
+            [-73.741867, 45.448524],
+            [-73.741581, 45.451213],
+            [-73.741302, 45.451472],
+            [-73.738779, 45.452456],
+            [-73.737877, 45.452854],
+            [-73.726612, 45.459604],
+            [-73.716974, 45.466591],
+            [-73.68605, 45.489563],
+            [-73.682817, 45.490656],
+            [-73.676875, 45.494832]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 14211,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction de l'autoroute 30 et de la route 236 à Beauharnois",
+          "LocalisationFinFR": "Châteauguay",
+          "LocalisationDebutEN": "Junction of highway 30 and route 236 in Beauharnois",
+          "LocalisationFinEN": "Châteauguay",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:01:48"
+        },
+        "bbox": [-73.890627, 45.290174, -73.72531, 45.344692],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.890627, 45.290938],
+            [-73.8796, 45.290216],
+            [-73.872164, 45.292111],
+            [-73.867653, 45.295519],
+            [-73.855463, 45.307632],
+            [-73.82525, 45.319819],
+            [-73.803733, 45.333971],
+            [-73.797297, 45.336432],
+            [-73.774863, 45.337327],
+            [-73.76359, 45.34002],
+            [-73.74529, 45.344564],
+            [-73.72531, 45.34297]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5001,
+          "NumeroRoute": 10,
+          "NomRoute": "autoroute 10",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Pont Samuel-De Champlain Rive-Sud",
+          "LocalisationFinFR": "Richelieu",
+          "LocalisationDebutEN": "Samuel-De Champlain Bridge Rive-Sud",
+          "LocalisationFinEN": "Richelieu",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:30:34"
+        },
+        "bbox": [-73.483129, 45.407756, -73.240269, 45.465468],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.483129, 45.465468],
+            [-73.476178, 45.464997],
+            [-73.458727, 45.464017],
+            [-73.456283, 45.463022],
+            [-73.433145, 45.446419],
+            [-73.427147, 45.442939],
+            [-73.417314, 45.435735],
+            [-73.412688, 45.431592],
+            [-73.381049, 45.408901],
+            [-73.378498, 45.40797],
+            [-73.287447, 45.409919],
+            [-73.240269, 45.415605]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5072,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 20 et 25 à Longueuil",
+          "LocalisationFinFR": "Sainte-Julie",
+          "LocalisationDebutEN": "Junction of highways 20 and 25 in Longueuil",
+          "LocalisationFinEN": "Sainte-Julie",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.470233, 45.568559, -73.327241, 45.580063],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.470233, 45.577146],
+            [-73.464667, 45.576035],
+            [-73.457948, 45.574527],
+            [-73.431779, 45.568941],
+            [-73.429784, 45.568657],
+            [-73.427481, 45.568559],
+            [-73.399326, 45.570093],
+            [-73.397647, 45.570248],
+            [-73.338312, 45.578296],
+            [-73.327241, 45.580063]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5071,
+          "NumeroRoute": 25,
+          "NomRoute": "autoroute 25",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 20 et 25 à Longueuil",
+          "LocalisationFinFR": "Pont-tunnel Louis-Hippolyte-La Fontaine",
+          "LocalisationDebutEN": "Junction of highways 20 and 25 in Longueuil",
+          "LocalisationFinEN": "Louis-Hippolyte-La Fontaine Bridge Tunnel",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.475128, 45.577236, -73.469511, 45.578431],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.469511, 45.577236],
+            [-73.475128, 45.578431]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5081,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Mont-Saint-Hilaire",
+          "LocalisationFinFR": "Sainte-Hélène-de-Bagot",
+          "LocalisationDebutEN": "Mont-Saint-Hilaire",
+          "LocalisationFinEN": "Sainte-Hélène-de-Bagot",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:02:35"
+        },
+        "bbox": [-73.153245, 45.594783, -72.678891, 45.77491],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.153245, 45.594783],
+            [-73.024263, 45.632158],
+            [-72.99228, 45.633745],
+            [-72.986876, 45.634847],
+            [-72.885864, 45.661463],
+            [-72.855902, 45.665683],
+            [-72.838528, 45.671796],
+            [-72.830868, 45.67735],
+            [-72.81422, 45.687552],
+            [-72.763644, 45.717012],
+            [-72.73597, 45.735535],
+            [-72.678891, 45.77491]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5111,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 10 et 30",
+          "LocalisationFinFR": "Longueuil, chemin de Chambly",
+          "LocalisationDebutEN": "Junction of highways 10 and 30",
+          "LocalisationFinEN": "Longueuil, chemin de Chambly",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:18"
+        },
+        "bbox": [-73.428492, 45.443827, -73.380441, 45.486143],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.428492, 45.443827],
+            [-73.397817, 45.464927],
+            [-73.396369, 45.465987],
+            [-73.3952, 45.466967],
+            [-73.391608, 45.470342],
+            [-73.389803, 45.47238],
+            [-73.382162, 45.482968],
+            [-73.381353, 45.484305],
+            [-73.380441, 45.486143]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5191,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Pont Samuel-De Champlain Rive-Sud",
+          "LocalisationFinFR": "Jonction des autoroutes 20 et 25 à Longueuil",
+          "LocalisationDebutEN": "Samuel-De Champlain Bridge Rive-Sud",
+          "LocalisationFinEN": "Junction of highways 20 and 25 in Longueuil",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:18"
+        },
+        "bbox": [-73.524417, 45.466498, -73.476173, 45.578586],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.494237, 45.466498],
+            [-73.498149, 45.474206],
+            [-73.506976, 45.480543],
+            [-73.508685, 45.48522],
+            [-73.513024, 45.49284],
+            [-73.517166, 45.5024],
+            [-73.523477, 45.51905],
+            [-73.524367, 45.526117],
+            [-73.516203, 45.536969],
+            [-73.509233, 45.542435],
+            [-73.490326, 45.565209],
+            [-73.476173, 45.578586]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5231,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Sainte-Julie",
+          "LocalisationFinFR": "Mont-Saint-Hilaire",
+          "LocalisationDebutEN": "Sainte-Julie",
+          "LocalisationFinEN": "Mont-Saint-Hilaire",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:41"
+        },
+        "bbox": [-73.327241, 45.580063, -73.153245, 45.594783],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.327241, 45.580063],
+            [-73.247914, 45.592851],
+            [-73.244368, 45.59335],
+            [-73.242269, 45.593474],
+            [-73.201756, 45.594076],
+            [-73.193843, 45.594297],
+            [-73.183144, 45.594449],
+            [-73.176323, 45.594447],
+            [-73.153245, 45.594783]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5401,
+          "NumeroRoute": 35,
+          "NomRoute": "autoroute 35",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Saint-Sébastien",
+          "LocalisationFinFR": "Saint-Jean-sur-Richelieu",
+          "LocalisationDebutEN": "Saint-Sébastien",
+          "LocalisationFinEN": "Saint-Jean-sur-Richelieu",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:54:10"
+        },
+        "bbox": [-73.263659, 45.124787, -73.125974, 45.326908],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.125974, 45.124787],
+            [-73.128603, 45.224389],
+            [-73.13032, 45.227642],
+            [-73.203404, 45.259144],
+            [-73.208031, 45.262572],
+            [-73.209188, 45.27288],
+            [-73.210717, 45.277601],
+            [-73.221807, 45.293252],
+            [-73.222544, 45.316211],
+            [-73.225032, 45.319516],
+            [-73.243122, 45.326218],
+            [-73.263659, 45.326834]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5431,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Varennes, montée de la Baronnie",
+          "LocalisationFinFR": "Contrecoeur",
+          "LocalisationDebutEN": "Varennes, montée de la Baronnie",
+          "LocalisationFinEN": "Contrecoeur",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:41"
+        },
+        "bbox": [-73.370642, 45.702449, -73.224742, 45.851904],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.370642, 45.702449],
+            [-73.355046, 45.728761],
+            [-73.352453, 45.732163],
+            [-73.332199, 45.753186],
+            [-73.329683, 45.754716],
+            [-73.306885, 45.763297],
+            [-73.281623, 45.790589],
+            [-73.27676, 45.80094],
+            [-73.275499, 45.802616],
+            [-73.243559, 45.824892],
+            [-73.241003, 45.827058],
+            [-73.224742, 45.851904]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5101,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 15 et 30 à Candiac",
+          "LocalisationFinFR": "Jonction des autoroutes 10 et 30",
+          "LocalisationDebutEN": "Junction of highways 15 and 30 in Candiac",
+          "LocalisationFinEN": "Junction of highways 10 and 30",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:01:48"
+        },
+        "bbox": [-73.519996, 45.355168, -73.42851, 45.443814],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.519996, 45.355168],
+            [-73.51473, 45.35648],
+            [-73.512335, 45.357671],
+            [-73.50922, 45.360213],
+            [-73.503178, 45.369787],
+            [-73.499183, 45.373542],
+            [-73.488464, 45.379217],
+            [-73.474082, 45.386139],
+            [-73.469965, 45.389441],
+            [-73.445096, 45.429026],
+            [-73.442771, 45.433462],
+            [-73.42851, 45.443814]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5421,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Longueuil, chemin de Chambly",
+          "LocalisationFinFR": "Jonction des autoroutes 20 et 30",
+          "LocalisationDebutEN": "Longueuil, chemin de Chambly",
+          "LocalisationFinEN": "Junction of highways 20 and 30",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:41"
+        },
+        "bbox": [-73.380441, 45.486143, -73.371302, 45.574048],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.380441, 45.486143],
+            [-73.372053, 45.503145],
+            [-73.371706, 45.504071],
+            [-73.371509, 45.505126],
+            [-73.372533, 45.543073],
+            [-73.371302, 45.574048]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5011,
+          "NumeroRoute": 10,
+          "NomRoute": "autoroute 10",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Richelieu",
+          "LocalisationFinFR": "Jonction de l'autoroute 10 et de la route 139 à Granby",
+          "LocalisationDebutEN": "Richelieu",
+          "LocalisationFinEN": "Junction of highway 10 and route 139 in Granby",
+          "CodeEtatChaussee": "Dm",
+          "DescriptionEtatChausseeFR": "Dégagée et mouillée",
+          "DescriptionEtatChausseeEN": "Bare and Wet",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:43:25"
+        },
+        "bbox": [-73.240256, 45.345467, -72.782257, 45.417733],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.240256, 45.415606],
+            [-73.217022, 45.417105],
+            [-73.188833, 45.399614],
+            [-73.119001, 45.415824],
+            [-73.113303, 45.41575],
+            [-73.078902, 45.392269],
+            [-73.034745, 45.371259],
+            [-73.002909, 45.376547],
+            [-72.962115, 45.374823],
+            [-72.94941, 45.366711],
+            [-72.839301, 45.348755],
+            [-72.782257, 45.345467]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5041,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Saint-Bernard-de-Lacolle, frontière des États-Unis",
+          "LocalisationFinFR": "Saint-Mathieu",
+          "LocalisationDebutEN": "Saint-Bernard-de-Lacolle, United States border",
+          "LocalisationFinEN": "Saint-Mathieu",
+          "CodeEtatChaussee": "Dm",
+          "DescriptionEtatChausseeFR": "Dégagée et mouillée",
+          "DescriptionEtatChausseeEN": "Bare and Wet",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T06:22:45"
+        },
+        "bbox": [-73.513789, 45.008851, -73.451965, 45.332685],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.452131, 45.008851],
+            [-73.452289, 45.010947],
+            [-73.454631, 45.069197],
+            [-73.46866, 45.095785],
+            [-73.467426, 45.16319],
+            [-73.452783, 45.189947],
+            [-73.45479, 45.198451],
+            [-73.475828, 45.211853],
+            [-73.477485, 45.215427],
+            [-73.467535, 45.266869],
+            [-73.493893, 45.307096],
+            [-73.513789, 45.332685]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5051,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Saint-Mathieu",
+          "LocalisationFinFR": "Pont Samuel-De Champlain Rive-Sud",
+          "LocalisationDebutEN": "Saint-Mathieu",
+          "LocalisationFinEN": "Samuel-De Champlain Bridge Rive-Sud",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.519956, 45.332685, -73.490386, 45.466498],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.513789, 45.332685],
+            [-73.519615, 45.373282],
+            [-73.515594, 45.390693],
+            [-73.510337, 45.394723],
+            [-73.508592, 45.397234],
+            [-73.501806, 45.413511],
+            [-73.497302, 45.42124],
+            [-73.491992, 45.426187],
+            [-73.490386, 45.429804],
+            [-73.492769, 45.44017],
+            [-73.492261, 45.451752],
+            [-73.494237, 45.466498]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5091,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Châteauguay",
+          "LocalisationFinFR": "Jonction des autoroutes 30 et 730 à Saint-Constant",
+          "LocalisationDebutEN": "Châteauguay",
+          "LocalisationFinEN": "Junction of highways 30 and 730 in Saint-Constant",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:01:48"
+        },
+        "bbox": [-73.72531, 45.341588, -73.631581, 45.364175],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.72531, 45.34297],
+            [-73.715693, 45.34185],
+            [-73.710905, 45.341588],
+            [-73.682043, 45.341829],
+            [-73.678078, 45.342122],
+            [-73.675772, 45.342457],
+            [-73.670076, 45.343852],
+            [-73.65211, 45.349925],
+            [-73.649852, 45.350805],
+            [-73.648023, 45.351654],
+            [-73.643272, 45.354589],
+            [-73.631581, 45.364175]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5141,
+          "NumeroRoute": 35,
+          "NomRoute": "autoroute 35",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Saint-Jean-sur-Richelieu",
+          "LocalisationFinFR": "Jonction des autoroutes 10 et 35 à Carignan",
+          "LocalisationDebutEN": "Saint-Jean-sur-Richelieu",
+          "LocalisationFinEN": "Junction of highways 10 and 35 in Carignan",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:30:34"
+        },
+        "bbox": [-73.315091, 45.326817, -73.263659, 45.409467],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.263659, 45.326834],
+            [-73.281358, 45.326909],
+            [-73.285712, 45.328776],
+            [-73.287043, 45.330671],
+            [-73.288007, 45.341857],
+            [-73.287671, 45.345463],
+            [-73.28854, 45.347999],
+            [-73.284721, 45.379142],
+            [-73.285436, 45.381401],
+            [-73.286623, 45.383003],
+            [-73.314483, 45.404158],
+            [-73.315091, 45.409467]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5161,
+          "NumeroRoute": 104,
+          "NomRoute": "route 104",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "La Prairie",
+          "LocalisationFinFR": "Saint-Jean-sur-Richelieu secteur Saint-Luc",
+          "LocalisationDebutEN": "La Prairie",
+          "LocalisationFinEN": "Saint-Jean-sur-Richelieu Saint-Luc sector",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:30:34"
+        },
+        "bbox": [-73.461163, 45.340499, -73.288173, 45.403614],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.461163, 45.403614],
+            [-73.443889, 45.395505],
+            [-73.433897, 45.394243],
+            [-73.423853, 45.393254],
+            [-73.409932, 45.389743],
+            [-73.388004, 45.384146],
+            [-73.368428, 45.375582],
+            [-73.357948, 45.375702],
+            [-73.346168, 45.370496],
+            [-73.302894, 45.360793],
+            [-73.29047, 45.348819],
+            [-73.288173, 45.340499]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5172,
+          "NumeroRoute": 132,
+          "NomRoute": "route 132",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Salaberry-de-Valleyfield",
+          "LocalisationFinFR": "Beauharnois",
+          "LocalisationDebutEN": "Salaberry-de-Valleyfield",
+          "LocalisationFinEN": "Beauharnois",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:31:06"
+        },
+        "bbox": [-74.093409, 45.272255, -73.867884, 45.316704],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.093409, 45.272255],
+            [-74.08115, 45.276799],
+            [-74.072205, 45.27713],
+            [-74.059491, 45.286033],
+            [-74.034679, 45.291839],
+            [-74.027782, 45.300002],
+            [-73.98789, 45.304509],
+            [-73.966521, 45.313676],
+            [-73.92185, 45.314579],
+            [-73.914213, 45.316512],
+            [-73.89861, 45.31386],
+            [-73.867884, 45.316174]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5181,
+          "NumeroRoute": 132,
+          "NomRoute": "route 132",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Pont Honoré-Mercier Rive-Sud",
+          "LocalisationFinFR": "Candiac",
+          "LocalisationDebutEN": "Honoré-Mercier Bridge Rive-Sud",
+          "LocalisationFinEN": "Candiac",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.667934, 45.374897, -73.519619, 45.405544],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.667934, 45.403683],
+            [-73.659835, 45.405544],
+            [-73.640644, 45.401273],
+            [-73.611162, 45.395757],
+            [-73.599397, 45.39524],
+            [-73.587535, 45.394995],
+            [-73.585533, 45.394528],
+            [-73.569797, 45.388782],
+            [-73.565049, 45.387614],
+            [-73.552412, 45.386478],
+            [-73.542191, 45.383782],
+            [-73.519619, 45.374897]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5241,
+          "NumeroRoute": 138,
+          "NomRoute": "route 138",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Ormstown",
+          "LocalisationFinFR": "Sainte-Martine",
+          "LocalisationDebutEN": "Ormstown",
+          "LocalisationFinEN": "Sainte-Martine",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:46:29"
+        },
+        "bbox": [-74.001835, 45.119722, -73.789777, 45.261082],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.001835, 45.124624],
+            [-73.989273, 45.119894],
+            [-73.939606, 45.139388],
+            [-73.928089, 45.153239],
+            [-73.896459, 45.181976],
+            [-73.863159, 45.195928],
+            [-73.82961, 45.212162],
+            [-73.823237, 45.218806],
+            [-73.811971, 45.236342],
+            [-73.806715, 45.242882],
+            [-73.79968, 45.24852],
+            [-73.789777, 45.261082]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5321,
+          "NumeroRoute": 132,
+          "NomRoute": "route 132",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Beauharnois",
+          "LocalisationFinFR": "Châteauguay",
+          "LocalisationDebutEN": "Beauharnois",
+          "LocalisationFinEN": "Châteauguay",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:30:31"
+        },
+        "bbox": [-73.867884, 45.316174, -73.733372, 45.356425],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.867884, 45.316174],
+            [-73.855078, 45.317046],
+            [-73.843765, 45.318836],
+            [-73.839559, 45.318686],
+            [-73.822965, 45.328571],
+            [-73.803288, 45.346279],
+            [-73.785573, 45.35554],
+            [-73.7759, 45.35303],
+            [-73.76858, 45.347385],
+            [-73.765685, 45.346827],
+            [-73.735327, 45.344422],
+            [-73.733525, 45.343473]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5351,
+          "NumeroRoute": 20,
+          "NomRoute": "autoroute 20",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 20 et 30 à Vaudreuil-Dorion",
+          "LocalisationFinFR": "L'Île-Perrot",
+          "LocalisationDebutEN": "Junction of highways 20 and 30 in Vaudreuil-Dorion",
+          "LocalisationFinEN": "L'Île-Perrot",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:56:15"
+        },
+        "bbox": [-74.047791, 45.359178, -73.957339, 45.4013],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.047791, 45.359178],
+            [-74.030871, 45.371051],
+            [-74.027393, 45.374774],
+            [-74.025608, 45.376177],
+            [-74.007169, 45.385368],
+            [-74.00509, 45.385926],
+            [-73.989232, 45.386724],
+            [-73.980815, 45.38821],
+            [-73.966318, 45.393148],
+            [-73.964266, 45.394099],
+            [-73.962228, 45.39567],
+            [-73.957339, 45.4013]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5362,
+          "NumeroRoute": 132,
+          "NomRoute": "route 132",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Châteauguay",
+          "LocalisationFinFR": "Pont Honoré-Mercier Rive-Sud",
+          "LocalisationDebutEN": "Châteauguay",
+          "LocalisationFinEN": "Honoré-Mercier Bridge Rive-Sud",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:30:31"
+        },
+        "bbox": [-73.725469, 45.342643, -73.667934, 45.403683],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.725469, 45.342643],
+            [-73.724412, 45.3446],
+            [-73.721483, 45.349447],
+            [-73.716065, 45.358149],
+            [-73.710898, 45.366994],
+            [-73.709214, 45.369845],
+            [-73.705607, 45.375844],
+            [-73.697718, 45.389715],
+            [-73.6956, 45.393267],
+            [-73.691483, 45.39861],
+            [-73.689069, 45.39907],
+            [-73.667934, 45.403683]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5361,
+          "NumeroRoute": 138,
+          "NomRoute": "route 138",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Sainte-Martine",
+          "LocalisationFinFR": "Châteauguay",
+          "LocalisationDebutEN": "Sainte-Martine",
+          "LocalisationFinEN": "Châteauguay",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:30:31"
+        },
+        "bbox": [-73.789777, 45.261082, -73.725469, 45.342643],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.789777, 45.261082],
+            [-73.76675, 45.277843],
+            [-73.765853, 45.278679],
+            [-73.739816, 45.319625],
+            [-73.739718, 45.319652],
+            [-73.739229, 45.320446],
+            [-73.738741, 45.321374],
+            [-73.730687, 45.334498],
+            [-73.727921, 45.338826],
+            [-73.726563, 45.341155],
+            [-73.726453, 45.341187],
+            [-73.725469, 45.342643]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5371,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 30 et 730 à Saint-Constant",
+          "LocalisationFinFR": "Jonction des autoroutes 15 et 30 à Candiac",
+          "LocalisationDebutEN": "Junction of highways 30 and 730 in Saint-Constant",
+          "LocalisationFinEN": "Junction of highways 15 and 30 in Candiac",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:01:48"
+        },
+        "bbox": [-73.631581, 45.355029, -73.519996, 45.369085],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.631581, 45.364175],
+            [-73.627138, 45.367569],
+            [-73.624547, 45.368595],
+            [-73.620956, 45.369085],
+            [-73.61728, 45.368692],
+            [-73.560113, 45.355469],
+            [-73.5582, 45.355232],
+            [-73.552394, 45.35511],
+            [-73.541893, 45.356374],
+            [-73.538336, 45.356553],
+            [-73.524403, 45.355094],
+            [-73.519996, 45.355168]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5381,
+          "NumeroRoute": 730,
+          "NomRoute": "autoroute 730",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 30 et 730 à Saint-Constant",
+          "LocalisationFinFR": "Sainte-Catherine",
+          "LocalisationDebutEN": "Junction of highways 30 and 730 in Saint-Constant",
+          "LocalisationFinEN": "Sainte-Catherine",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.631568, 45.364186, -73.603226, 45.395465],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.631568, 45.364186],
+            [-73.628249, 45.366738],
+            [-73.627262, 45.36729],
+            [-73.625658, 45.367979],
+            [-73.624875, 45.368507],
+            [-73.624515, 45.368896],
+            [-73.605539, 45.388192],
+            [-73.604907, 45.388958],
+            [-73.604265, 45.389953],
+            [-73.603581, 45.39158],
+            [-73.603346, 45.392824],
+            [-73.603226, 45.395465]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5391,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Salaberry-de-Valleyfield secteur Saint-Timothée",
+          "LocalisationFinFR": "Jonction de l'autoroute 30 et de la route 236 à Beauharnois",
+          "LocalisationDebutEN": "Salaberry-de-Valleyfield Saint-Timothée sector",
+          "LocalisationFinEN": "Junction of highway 30 and route 236 in Beauharnois",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:01:48"
+        },
+        "bbox": [-74.003887, 45.290938, -73.890627, 45.307347],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.003887, 45.295015],
+            [-74.00101, 45.294392],
+            [-73.988671, 45.295918],
+            [-73.981241, 45.297588],
+            [-73.973463, 45.300107],
+            [-73.961251, 45.305651],
+            [-73.956155, 45.307134],
+            [-73.952557, 45.307347],
+            [-73.948106, 45.306733],
+            [-73.915109, 45.295355],
+            [-73.905828, 45.292456],
+            [-73.890627, 45.290938]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 4501,
+          "NumeroRoute": 15,
+          "NomRoute": "autoroute 15",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Sainte-Thérèse",
+          "LocalisationFinFR": "Saint-Jérôme",
+          "LocalisationDebutEN": "Sainte-Thérèse",
+          "LocalisationFinEN": "Saint-Jérôme",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-74.039085, 45.6437, -73.863862, 45.807274],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.863862, 45.6437],
+            [-73.9172, 45.67973],
+            [-73.969326, 45.714574],
+            [-73.970624, 45.718322],
+            [-73.970469, 45.724848],
+            [-73.972662, 45.727743],
+            [-73.99353, 45.739599],
+            [-74.01815, 45.755531],
+            [-74.020095, 45.758612],
+            [-74.020649, 45.792573],
+            [-74.022967, 45.795085],
+            [-74.039085, 45.807274]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 4621,
+          "NumeroRoute": 50,
+          "NomRoute": "autoroute 50",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Lachute",
+          "LocalisationFinFR": "Jonction des autoroutes 15 et 50 à Mirabel",
+          "LocalisationDebutEN": "Lachute",
+          "LocalisationFinEN": "Junction of highways 15 and 50 in Mirabel",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-74.335361, 45.629554, -73.970393, 45.719854],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.335361, 45.629554],
+            [-74.311752, 45.639256],
+            [-74.265369, 45.642969],
+            [-74.235461, 45.648015],
+            [-74.202634, 45.665929],
+            [-74.173502, 45.678642],
+            [-74.094575, 45.685494],
+            [-74.065605, 45.682866],
+            [-74.037551, 45.682307],
+            [-74.027452, 45.687018],
+            [-74.000897, 45.703699],
+            [-73.970393, 45.719854]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 4641,
+          "NumeroRoute": 148,
+          "NomRoute": "route 148",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Jonction des routes 148 et 158 à Mirabel",
+          "LocalisationFinFR": "Saint-Eustache, montée Renaud",
+          "LocalisationDebutEN": "Junction of routes 148 and 158 in Mirabel",
+          "LocalisationFinEN": "Saint-Eustache, montée Renaud",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-74.190136, 45.579378, -73.977786, 45.679659],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.190136, 45.679659],
+            [-74.105502, 45.620999],
+            [-74.077465, 45.610505],
+            [-74.067601, 45.608067],
+            [-74.055522, 45.6023],
+            [-74.046578, 45.600901],
+            [-74.037217, 45.59756],
+            [-74.02707, 45.589176],
+            [-74.008686, 45.580669],
+            [-73.997966, 45.580748],
+            [-73.990606, 45.579423],
+            [-73.977786, 45.580778]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 4661,
+          "NumeroRoute": 158,
+          "NomRoute": "route 158",
+          "NomRegion": "Laurentides—Lanaudière",
+          "LocalisationDebutFR": "Jonction de l'autoroute 15 et de la route 158",
+          "LocalisationFinFR": "Saint-Lin-Laurentides",
+          "LocalisationDebutEN": "Junction of highway 15 and route 158",
+          "LocalisationFinEN": "Saint-Lin-Laurentides",
+          "CodeEtatChaussee": "Dm",
+          "DescriptionEtatChausseeFR": "Dégagée et mouillée",
+          "DescriptionEtatChausseeEN": "Bare and Wet",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T05:32:07"
+        },
+        "bbox": [-74.000927, 45.746417, -73.757053, 45.867418],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.000927, 45.746417],
+            [-73.991367, 45.761862],
+            [-73.984467, 45.763821],
+            [-73.936292, 45.797775],
+            [-73.915423, 45.81262],
+            [-73.90476, 45.816662],
+            [-73.8942, 45.821037],
+            [-73.879731, 45.832104],
+            [-73.819619, 45.838714],
+            [-73.794658, 45.845105],
+            [-73.781227, 45.851784],
+            [-73.757053, 45.867418]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3541,
+          "NumeroRoute": 25,
+          "NomRoute": "autoroute 25",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Pont-tunnel Louis-Hippolyte-La Fontaine",
+          "LocalisationFinFR": "Jonction de l'autoroute 25 et du boulevard Henri-Bourassa à Montréal",
+          "LocalisationDebutEN": "Louis-Hippolyte La Fontaine Bridge Tunnel",
+          "LocalisationFinEN": "Junction of highway 25 and boulevard Henri-Bourassa in Montréal",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-73.591078, 45.578431, -73.475131, 45.614317],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.475131, 45.578431],
+            [-73.481808, 45.579724],
+            [-73.512679, 45.586292],
+            [-73.520855, 45.588757],
+            [-73.524676, 45.589994],
+            [-73.52956, 45.591831],
+            [-73.541839, 45.594298],
+            [-73.549003, 45.597241],
+            [-73.561759, 45.602994],
+            [-73.567062, 45.606003],
+            [-73.572981, 45.608248],
+            [-73.591078, 45.614317]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 5121,
+          "NumeroRoute": 30,
+          "NomRoute": "autoroute 30",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Jonction des autoroutes 20 et 30",
+          "LocalisationFinFR": "Varennes, montée de la Baronnie",
+          "LocalisationDebutEN": "Junction of highways 20 and 30",
+          "LocalisationFinEN": "Varennes, montée de la Baronnie",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:54:41"
+        },
+        "bbox": [-73.38696, 45.574048, -73.370608, 45.702449],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.371302, 45.574048],
+            [-73.370727, 45.591509],
+            [-73.371186, 45.593404],
+            [-73.377058, 45.611627],
+            [-73.37718, 45.612803],
+            [-73.373311, 45.639069],
+            [-73.373358, 45.641017],
+            [-73.374012, 45.643152],
+            [-73.386486, 45.672349],
+            [-73.38696, 45.674669],
+            [-73.38672, 45.676202],
+            [-73.370642, 45.702449]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3701,
+          "NumeroRoute": 19,
+          "NomRoute": "autoroute 19",
+          "NomRegion": "Montréal",
+          "LocalisationDebutFR": "Pont Papineau à Montréal",
+          "LocalisationFinFR": "Jonction de l'autoroute 19 et de la route 335 à Laval",
+          "LocalisationDebutEN": "Papineau Bridge in Montréal",
+          "LocalisationFinEN": "Junction of highway 19 and route 335 in Laval",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:47:24"
+        },
+        "bbox": [-73.70965, 45.570302, -73.658433, 45.61752],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.658433, 45.570302],
+            [-73.662482, 45.572325],
+            [-73.673524, 45.582344],
+            [-73.67528, 45.583629],
+            [-73.676017, 45.583986],
+            [-73.680918, 45.585874],
+            [-73.681924, 45.586633],
+            [-73.689114, 45.593308],
+            [-73.690528, 45.59501],
+            [-73.701695, 45.610425],
+            [-73.703351, 45.612122],
+            [-73.70965, 45.61752]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3702,
+          "NumeroRoute": 335,
+          "NomRoute": "route 335",
+          "NomRegion": "Laval",
+          "LocalisationDebutFR": "Jonction de l'autoroute 19 et de la route 335 à Laval",
+          "LocalisationFinFR": "Bois-des-Filion",
+          "LocalisationDebutEN": "Junction of highway 19 and route 335 in Laval",
+          "LocalisationFinEN": "Bois-des-Filion",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T04:47:24"
+        },
+        "bbox": [-73.765145, 45.61752, -73.70965, 45.672284],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-73.70965, 45.61752],
+            [-73.715989, 45.623578],
+            [-73.73412, 45.640212],
+            [-73.736498, 45.642846],
+            [-73.74149, 45.650776],
+            [-73.745013, 45.654853],
+            [-73.74656, 45.656233],
+            [-73.751874, 45.660042],
+            [-73.758671, 45.664813],
+            [-73.759896, 45.665822],
+            [-73.761012, 45.666841],
+            [-73.765145, 45.672284]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "NumeroSegment": 3561,
+          "NumeroRoute": 40,
+          "NomRoute": "autoroute 40",
+          "NomRegion": "Montérégie",
+          "LocalisationDebutFR": "Vaudreuil-Dorion",
+          "LocalisationFinFR": "Kirkland",
+          "LocalisationDebutEN": "Vaudreuil-Dorion",
+          "LocalisationFinEN": "Kirkland",
+          "CodeEtatChaussee": "Ds",
+          "DescriptionEtatChausseeFR": "Dégagée et sèche",
+          "DescriptionEtatChausseeEN": "Bare and Dry",
+          "CodeCouleurEtatChaussee": "0D0D0D",
+          "CodeVisibilite": "B",
+          "DescriptionVisibiliteFR": "Bonne",
+          "DescriptionVisibiliteEN": "Good",
+          "CodeCouleurVisibilite": "0D0D0D",
+          "IndicateurPresenceLamesNeige": "N",
+          "EnVigueurDepuis": "2026-11-15T03:25:19"
+        },
+        "bbox": [-74.03496, 45.411032, -73.859031, 45.45234],
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-74.03496, 45.411032],
+            [-74.025901, 45.41487],
+            [-74.012562, 45.416946],
+            [-73.969472, 45.421425],
+            [-73.964461, 45.421877],
+            [-73.943963, 45.420165],
+            [-73.933534, 45.419556],
+            [-73.928415, 45.420976],
+            [-73.904232, 45.433877],
+            [-73.897747, 45.436027],
+            [-73.887753, 45.438668],
+            [-73.859031, 45.45234]
+          ]
+        }
+      }
+    ]
+  }
+}

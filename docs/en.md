@@ -1,61 +1,116 @@
-# Demo Devices Template
+# Québec 511 (road works and winter road conditions)
 
-This is the user documentation of the integration. Gladys re-hosts this file
-and shows a permanent **Documentation** link to it in the Configuration screen
-(in the user's language, with English as the fallback) — it is when
-configuring that the user needs it most. Keep the short onboarding hints in
-the `section` blocks of the manifest `config_schema`; put the long
-step-by-step (screenshots, troubleshooting…) here.
+Unofficial integration. It reads two open datasets of the **Ministère des Transports et de la Mobilité durable du
+Québec** (MTMD), published on [Données Québec](https://www.donneesquebec.ca/): **road works** (with their
+restrictions) and **winter road conditions** of the provincial network. It reads them from the ministry's public WFS
+service (`ws.mapserver.transports.gouv.qc.ca`), the source of both datasets. No account, no API key.
+
+> This integration is not an official source. Before you drive, check [Québec 511](https://www.quebec511.info/)
+> itself. The data may lag behind the road, and the integration may miss road works or a change of conditions.
+
+Source: Ministère des Transports et de la Mobilité durable du Québec, datasets "Travaux routiers" and "Condition
+routière hivernale du réseau routier", Données Québec, licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). The integration does not change the data; it filters it by zone and
+sums it up. It is not endorsed by the ministry.
 
 ## What you get
 
-Six demo devices show up after installation: a weather station (real data
-from Open-Meteo), a switch, a dimmable light, a smart plug with power
-metering, a motion sensor and a camera.
+Up to **three watch zones**, each one a Gladys device. A zone is a circle around a point (1 to 300 km), optionally
+limited to some route numbers ("20, 40, 117").
+
+Each zone device has:
+
+| Feature                       | Type    | Meaning                                                                  |
+| ----------------------------- | ------- | ------------------------------------------------------------------------ |
+| Road works in effect          | counter | Road works whose period covers the current time, inside the zone         |
+| Major road works              | counter | Those whose restriction is "major" (_Majeure_) in the data               |
+| Segments in winter conditions | counter | Road segments inside the zone whose surface is snowy, snow packed or icy |
+| Summary                       | text    | The road works (major first, then by distance), then the winter segments |
+
+The summary is written in the language chosen in the configuration (French by default, or English): the works
+titles come in both languages from the ministry; place names stay as the ministry writes them.
+
+**In effect** means: the start of the works is past and their end is not, compared with the time of the ministry's
+server (`Date` header of its answer). The dates of the data have no time zone: they are read as Québec time
+(Eastern, daylight saving time included). Road works planned for later are not counted until they start. The data
+gives a period, not daily hours: works "during the week" or "at night" count for their whole period. Works without a
+readable start or end, or an answer without a readable server time, count as in effect (never hidden). A server
+time more than a day away from the clock of Gladys is not believed (taken as unreadable).
+
+**Winter conditions**: the road surface codes of the ministry's data dictionary. "Bare and dry" and "Bare and wet"
+are not winter conditions; partly snow covered, snow covered, partly snow packed, snow packed, partly ice covered and
+ice covered are. An unknown code is counted neither way. The ministry publishes this layer during the winter season;
+out of season, or where no segment is covered, the count is 0 and the summary says "No winter condition segment in the
+zone". Reduced or no visibility is written in the summary next to a segment in winter conditions (not for a bare road).
+
+**Nothing rather than 0**: an answer that is not a full list (an error page, a list cut short, a list where more
+than half of the entries cannot be read) is never published as 0. Each of the two datasets stands alone: when one
+fails, its own features keep their last value, the status says why, and the other one is still published. The
+summary is published with the road works; it then says "Winter conditions not read" when that dataset failed.
+
+## Scene trigger: "New road works in a zone"
+
+Fired when road works in effect appear in a zone for the first time and started or were updated within the last 24
+hours (server time). Filters: zone, restriction (major, minor). Variables: route number (empty when none), works title
+(French and English), location, restriction, direction and restriction type (French), major (yes/no), start and end
+(UTC, ISO 8601), distance from the zone center (km), ministry works id.
+
+It is not fired by the first read of a zone, nor after you move a zone (new center, radius or routes): that read
+only learns what is already there. It is not fired when the answer carries no readable server time. At most 20
+events per zone and per read.
 
 ## Configuration
 
-1. Open the **Configuration** tab of the integration.
-2. Set the **latitude** and **longitude** the demo weather station should
-   observe (they default to Paris), and pick your temperature unit.
-   The **refresh interval** sets how often the weather station and the
-   plug's power are read: every 5 minutes by default, every minute at most.
-3. Save: the devices appear in the **Discovery** tab, ready to be added.
+1. **Language of the summary**: French or English.
+2. **Read interval**: 15 to 120 minutes (15 by default).
+3. **Zone 1** (required), zones 2 and 3 (optional, left empty to turn them off): a name, the latitude and longitude
+   of the center (decimal degrees, inside Québec), the radius in km (20 by default), and optionally the routes to
+   keep, as numbers separated by commas ("20, 40, 117"; "A-20", "R-117", "autoroute 20" or "route 117" work too).
+   With routes set, works and segments without a route number (local streets, some bridges) are left out.
 
-The **Prefer the local connection** toggle drives the demo plug: it reports
-the channel it actually uses as a badge (local or cloud), with an orange dot
-when it runs degraded (local refused, cloud fallback).
+A refused field is named in the status (the value you typed is not repeated there).
 
-## Actions
+The button **Show the last read** tells what the last read of each zone gave and when the next comes. It does not
+read the ministry service.
 
-- **Test the weather provider** — performs a live request to Open-Meteo and
-  shows the current temperature and humidity under the button.
-- **Identify a device** — pick one of your devices in the list and it will
-  signal itself (the demo light "blinks" in the logs).
+## Pace and courtesy toward the ministry service
 
-## Scenes
+- Two requests per round (road works, then winter conditions), whatever the number of zones: each asks only for the
+  box holding every zone. One request at a time, 5 seconds at least between the starts of two requests.
+- A round every interval, 15 minutes at least, measured from the start of the previous round.
+- No read sooner after a restart, a reconnection to Gladys, a configuration saved unchanged, a Discovery or the
+  test button (the time of the last attempt is kept in `/data`, and in memory); moving a zone reads at once, 5
+  seconds after the last request.
+- When `/data` cannot tell the last attempt (unreadable file, a date in the future, a `/data` that cannot be written
+  or does not answer within 2 seconds), the first read waits 15 minutes after the start, and the status says so; a
+  `/data` that stops being writable later is said in the status too: a restart may then read sooner.
+- After a **429** ("too many requests"), every read pauses for 15 minutes, then 30, 60… up to 6 hours; after a
+  server error (**5xx**) or another unexpected status (400, 403, 404…), for 5 minutes, then 10, 20… up to 6 hours;
+  a `Retry-After` longer than that is honored, up to 6 hours. A refusal that arrives while the configuration is
+  being saved, or Gladys reconnects, still starts the pause. The pause is kept in `/data` across restarts; the
+  doubling starts over after a successful read.
+- User-Agent `gladys-quebec-511/<version> (+https://github.com/LM1LC3N7/gladys-quebec-511)`.
+- An answer is cut after 30 seconds or 8 MB (the whole province is about 1.3 MB).
 
-The integration adds its own cards to the scene editor (Gladys 5.1 or
-later), under the **Integrations** category:
+The service offers neither `ETag` nor `Last-Modified`: every round reads the data again. The datasets are updated
+continuously; reading more often than every 15 minutes would bring nothing.
 
-- **Motion detected** (trigger) — starts the scene when a demo motion sensor
-  sees something move. Optionally pick the sensor and what moved (person,
-  animal); left empty, any detection matches. The following actions can
-  read what moved with `{{triggerEvent.data.target}}`.
-- **Identify a device** (action) — makes the chosen device signal itself.
-  It returns whether the device could signal itself, so the following
-  actions can depend on it.
+## Status
 
-## Dashboard
+The Configuration screen shows, for each zone, the counts of the last read and its time (Eastern time), or, for each
+dataset that failed, why and the time of its last data. Data older than 2 hours is said stale. The integration is
+shown connected when the last read of at least one dataset of one zone succeeded, less than 2 hours ago.
 
-Add the **Demo status** widget to a dashboard: it shows the live
-temperature of the weather station and the power of the office plug, the
-connection the plug currently uses (orange when degraded) and the observed
-location. Its **Identify the light** button makes the demo light signal
-itself.
+## Privacy
 
-## Troubleshooting
+The coordinates of your zones stay in the Gladys configuration. The ministry service receives the box around your
+zones (their circles fit in it). The `/data` file holds the time of the last attempt, the pause, and per zone the
+ids of the road works already seen with a salted fingerprint of the zone, not its coordinates.
 
-The integration logs everything it does: check the integration logs from the
-Gladys UI (or `docker logs` on the host) with `LOG_LEVEL=debug` for the full
-detail.
+## Limits
+
+- Québec only (the zone center must be in Québec; data near the borders is included).
+- Tested against the real ministry service on 2026-11-15 (Montréal, Québec City, Laurentides); never tested by a user
+  in Québec, nor during a snow storm (on that day every segment around Montréal was bare).
+- Road warnings (incidents, closures announced on Québec 511) are not part of these open datasets and are not read.
+- quebec511.info itself is not read (it refuses automated clients); only the open data service is.
