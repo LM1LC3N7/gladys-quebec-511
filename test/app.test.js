@@ -363,7 +363,8 @@ test('one layer failing: its features are not published, the other layer is', as
   await wait(REQUEST_GAP);
   assert.deepEqual(published(fake, F(1, 'works')), [28], 'nothing published for the failed layer');
   assert.deepEqual(published(fake, F(1, 'winter_segments')), [0]);
-  assert.equal(published(fake, F(1, 'summary')).length, 1);
+  assert.equal(published(fake, F(1, 'summary')).length, 2, 'the summary follows the layers read');
+  assert.match(published(fake, F(1, 'summary'))[1], /^Travaux non lus · Chaussées dégagées$/);
   assert.match(
     fake.connectionStatus.message.en,
     /Home: road works: The MTMD service could not be reached, last data Nov 15, 07:42 ET, nothing published since; 0 segment/,
@@ -514,14 +515,15 @@ test('a planned work is announced when it comes into effect', async () => {
   assert.equal(fake.sceneEvents.length, 1);
 });
 
-test('no scene event without a readable server time, nor after a moved zone', async () => {
+test('no scene event without a believable server time, nor after a moved zone', async () => {
   let works = [];
   let date = true;
   const api = createApi((url, a) =>
     layerOf(url) === 'works'
       ? json(
           collection('works', () => works),
-          { date: date ? a.clock.wall() : null },
+          // Not believable: three days off the local clock.
+          { date: date ? a.clock.wall() : a.clock.wall() + 72 * HOUR },
         )
       : real(url),
   );
@@ -536,12 +538,8 @@ test('no scene event without a readable server time, nor after a moved zone', as
   await wait(INTERVAL);
   await wait(REQUEST_GAP);
   assert.equal(api.calls.length, 4);
-  assert.equal(fake.sceneEvents.length, 0, 'no Date header: nothing said new');
-  assert.deepEqual(
-    published(fake, F(1, 'works')).at(-1),
-    2,
-    'without a time, every listed work counts',
-  );
+  assert.equal(fake.sceneEvents.length, 0, 'no believable time: nothing said new');
+  assert.deepEqual(published(fake, F(1, 'works')), [0], 'and nothing counted');
   date = true;
   await app.start({ ...HOME, zone1_radius_km: 21 });
   works = [work('a'), work('b')];

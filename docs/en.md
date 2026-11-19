@@ -33,9 +33,11 @@ titles come in both languages from the ministry; place names stay as the ministr
 **In effect** means: the start of the works is past and their end is not, compared with the time of the ministry's
 server (`Date` header of its answer). The dates of the data have no time zone: they are read as Québec time
 (Eastern, daylight saving time included). Road works planned for later are not counted until they start. The data
-gives a period, not daily hours: works "during the week" or "at night" count for their whole period. Works without a
-readable start or end, or an answer without a readable server time, count as in effect (never hidden). A server
-time more than a day away from the clock of Gladys is not believed (taken as unreadable).
+gives a period, not daily hours: works "during the week" or "at night" count for their whole period. A work whose
+start or end cannot be read counts as in effect; when more than half of the works have such dates, the dataset is
+refused (its format changed) and nothing is counted. Without a `Date` header, the clock of Gladys is used, when it is
+plausible. A `Date` more than a day away from the clock of Gladys (one of the two is wrong), or no `Date` with an
+implausible clock: the road works are not counted at all (never every listed work), and the status says so.
 
 **Winter conditions**: the road surface codes of the ministry's data dictionary. "Bare and dry" and "Bare and wet"
 are not winter conditions; partly snow covered, snow covered, partly snow packed, snow packed, partly ice covered and
@@ -46,7 +48,8 @@ zone". Reduced or no visibility is written in the summary next to a segment in w
 **Nothing rather than 0**: an answer that is not a full list (an error page, a list cut short, a list where more
 than half of the entries cannot be read) is never published as 0. Each of the two datasets stands alone: when one
 fails, its own features keep their last value, the status says why, and the other one is still published. The
-summary is published with the road works; it then says "Winter conditions not read" when that dataset failed.
+summary follows the datasets read: it says "Road works not read" or "Winter conditions not read" for the one that
+failed. A list without the count the service always sends (`numberMatched`) is taken as cut, never as 0.
 
 ## Scene trigger: "New road works in a zone"
 
@@ -56,8 +59,8 @@ hours (server time). Filters: zone, restriction (major, minor). Variables: route
 (UTC, ISO 8601), distance from the zone center (km), ministry works id.
 
 It is not fired by the first read of a zone, nor after you move a zone (new center, radius or routes): that read
-only learns what is already there. It is not fired when the answer carries no readable server time. At most 20
-events per zone and per read.
+only learns what is already there. It is not fired when no time can be believed (see above). At most 20 events
+per zone and per read: the others come with the next read (when still within 24 hours).
 
 ## Configuration
 
@@ -82,8 +85,9 @@ read the ministry service.
   test button (the time of the last attempt is kept in `/data`, and in memory); moving a zone reads at once, 5
   seconds after the last request.
 - When `/data` cannot tell the last attempt (unreadable file, a date in the future, a `/data` that cannot be written
-  or does not answer within 2 seconds), the first read waits 15 minutes after the start, and the status says so; a
-  `/data` that stops being writable later is said in the status too: a restart may then read sooner.
+  or does not answer within 2 seconds), the first read waits 15 minutes after the start, and the status says so; an
+  unreadable `/data` is read again every 10 seconds, and what it holds (pause, works already seen) comes back once
+  it reads; a `/data` that stops being writable later is said in the status too: a restart may then read sooner.
 - After a **429** ("too many requests"), every read pauses for 15 minutes, then 30, 60… up to 6 hours; after a
   server error (**5xx**) or another unexpected status (400, 403, 404…), for 5 minutes, then 10, 20… up to 6 hours;
   a `Retry-After` longer than that is honored, up to 6 hours. A refusal that arrives while the configuration is

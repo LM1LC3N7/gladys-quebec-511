@@ -96,18 +96,22 @@ export function describeSegment(match, language) {
 }
 
 /**
- * The summary text of a zone, bounded to SUMMARY_MAX characters. `conditions`
- * is null when the conditions layer could not be read.
+ * The summary text of a zone, bounded to SUMMARY_MAX characters. `works` or
+ * `conditions` is null when that layer could not be read (said in the text).
  */
 export function summary(works, conditions, language) {
   const parts = [];
-  const c = workCounts(works);
-  parts.push(
-    c.works === 0
-      ? t(language, 'noWorks')
-      : t(language, 'worksCount', { count: c.works, major: c.major }),
-  );
-  const lines = works.map((m) => describeWork(m, language));
+  let lines = [];
+  if (works === null) parts.push(t(language, 'worksUnread'));
+  else {
+    const c = workCounts(works);
+    parts.push(
+      c.works === 0
+        ? t(language, 'noWorks')
+        : t(language, 'worksCount', { count: c.works, major: c.major }),
+    );
+    lines = works.map((m) => describeWork(m, language));
+  }
   let tail;
   if (conditions === null) tail = [t(language, 'conditionsUnread')];
   else {

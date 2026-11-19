@@ -1,11 +1,5 @@
 [
   {
-    "name": "cut answer refused",
-    "file": "src/wfs.js",
-    "from": "json.numberMatched === json.features.length",
-    "to": "true"
-  },
-  {
     "name": "mostly unreadable refused",
     "file": "src/wfs.js",
     "from": "skipped * 2 > json.features.length",
@@ -82,12 +76,6 @@
     "file": "src/app.js",
     "from": "if (winter !== null) {",
     "to": "if (true) {"
-  },
-  {
-    "name": "server date sanity",
-    "file": "src/app.js",
-    "from": "Math.abs(at - this.now()) > DATE_SANITY",
-    "to": "false"
   },
   {
     "name": "fresh within 24 h",
@@ -172,5 +160,95 @@
     "file": "src/config.js",
     "from": "refreshMinutes < REFRESH_MIN ||",
     "to": "false ||"
+  },
+  {
+    "name": "cut answer refused",
+    "file": "src/wfs.js",
+    "from": "Number.isInteger(json.numberMatched) && json.numberMatched === json.features.length",
+    "to": "true"
+  },
+  {
+    "name": "server date within a day",
+    "file": "src/app.js",
+    "from": "if (Math.abs(at - local) <= DATE_SANITY) return at;",
+    "to": "return at;"
+  },
+  {
+    "name": "local clock plausible",
+    "file": "src/app.js",
+    "from": "if (local >= LOCAL_FLOOR) return local;",
+    "to": "return local;"
+  },
+  {
+    "name": "no time: works not counted",
+    "file": "src/app.js",
+    "from": "result.ok && key === 'works' && result.at === null",
+    "to": "false"
+  },
+  {
+    "name": "scene loop stops with the app",
+    "file": "src/app.js",
+    "from": "    for (const match of fresh.slice(0, SCENE_EVENTS_PER_READ)) {\n      if (gen !== this.gen) return;",
+    "to": "    for (const match of fresh.slice(0, SCENE_EVENTS_PER_READ)) {"
+  },
+  {
+    "name": "update in the future ignored",
+    "file": "src/app.js",
+    "from": "v !== null && v <= at + 5 * MINUTE",
+    "to": "v !== null"
+  },
+  {
+    "name": "seen kept 14 days",
+    "file": "src/app.js",
+    "from": ".filter(([, when]) => wall - when <= SEEN_KEEP)",
+    "to": ".filter(() => true)"
+  },
+  {
+    "name": "seen 2000 at most",
+    "file": "src/app.js",
+    "from": "      .slice(0, SEEN_MAX);\n",
+    "to": "      ;\n"
+  },
+  {
+    "name": "points per geometry",
+    "file": "src/geo.js",
+    "from": "if (count >= MAX_POINTS) break;",
+    "to": "if (false) break;"
+  },
+  {
+    "name": "ids in a Map",
+    "file": "src/app.js",
+    "from": "if (seen.has(match.work.id)) continue;",
+    "to": "if (Object.fromEntries(seen)[match.work.id] !== undefined) continue;"
+  },
+  {
+    "name": "past 20 held for the next read",
+    "file": "src/app.js",
+    "from": "if (!held.has(match.work.id)) seen.set",
+    "to": "seen.set"
+  },
+  {
+    "name": "reload while unreadable",
+    "file": "src/app.js",
+    "from": "    this.armReload();\n    for (const error",
+    "to": "    for (const error"
+  },
+  {
+    "name": "stop cuts the request",
+    "file": "src/app.js",
+    "from": "    this.abortInflight?.abort();\n",
+    "to": ""
+  },
+  {
+    "name": "undated works refuse the layer",
+    "file": "src/wfs.js",
+    "from": "undated.length * 2 > items.length",
+    "to": "false"
+  },
+  {
+    "name": "summary without works",
+    "file": "src/app.js",
+    "from": "if (works || conditions) {",
+    "to": "if (works) {"
   }
 ]

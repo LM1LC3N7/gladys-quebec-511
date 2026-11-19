@@ -39,6 +39,9 @@
   1.3 MB (conditions) and 0.7 MB (works): a far apart set of zones stays small.
 - **Each layer stands alone**: a failed layer leaves its own features unpublished; the summary goes with the works
   (it says "Winter conditions not read" when that layer failed).
+- **Reference time (review r1)**: the server `Date` when within a day of the local clock; no `Date`: the local
+  clock when after 2026-11-01; otherwise the works are not counted (status "no believable time"), never all in
+  effect. More than half of the works undated: layer refused.
 - **"In effect"**: start ≤ server time < end; dates without offset read as America/Toronto (checked: a condition
   "en vigueur depuis 04:07:47" in an answer dated 09:19 GMT). Unknown start or end = in effect. A spring-change time
   that does not exist is read with the offset before the change; a fall-back time as its first occurrence.

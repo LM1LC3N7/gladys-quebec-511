@@ -22,3 +22,7 @@ the notes of the version's GitHub Release.
   the interval after a restart.
 - Each dataset published on its own: a failed one keeps its last values (never 0) and the status says why.
 - Store: `countries: ["CA"]` (the integration serves Québec only), so `gladys_version` is `>=5.3.0`.
+- Without a believable time (server `Date` more than a day off the Gladys clock, or none with an implausible
+  clock), road works are not counted and the status says so; a list without `numberMatched` is never 0.
+- `/data` unreadable at start is read again every 10 s; a stop cuts the request in flight; more than 20 new works
+  in one read are announced at the next read.

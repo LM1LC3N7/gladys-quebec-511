@@ -242,7 +242,7 @@ test('a list made only of unreadable features is never published as 0', async ()
   await begin();
   await wait(REQUEST_GAP_PLUS);
   assert.deepEqual(published(fake, F(1, 'works')), []);
-  assert.deepEqual(published(fake, F(1, 'summary')), []);
+  assert.match(published(fake, F(1, 'summary'))[0], /^Travaux non lus · /);
   assert.match(
     fake.connectionStatus.message.en,
     /road works: The MTMD sends features that cannot be read/,
@@ -334,15 +334,46 @@ test('a body larger than 8 MB is cut before it is read in full', async () => {
 
 // --- Server time ----------------------------------------------------------------------
 
-test('a server Date of 1970 is not believed: every listed work counts, never 0', async () => {
-  const api = createApi((url) =>
-    layerOf(url) === 'works' ? json(collection('works'), { date: 0 }) : real(url),
-  );
+for (const [name, date] of [
+  ['of 1970', () => 0],
+  ['3 days ahead', (a) => a.clock.wall() + 72 * HOUR],
+  ['30 h behind', (a) => a.clock.wall() - 30 * HOUR],
+]) {
+  test(`a server Date ${name}: road works not counted (never all listed), said in the status`, async () => {
+    const api = createApi((url, a) =>
+      layerOf(url) === 'works' ? json(collection('works'), { date: date(a) }) : real(url),
+    );
+    const { begin, wait, fake } = await setup({ api });
+    await begin();
+    await wait(REQUEST_GAP_PLUS);
+    assert.deepEqual(published(fake, F(1, 'works')), []);
+    assert.deepEqual(published(fake, F(1, 'major_works')), []);
+    assert.deepEqual(published(fake, F(1, 'winter_segments')), [0]);
+    assert.match(published(fake, F(1, 'summary'))[0], /^Travaux non lus · /);
+    assert.match(
+      fake.connectionStatus.message.en,
+      /road works: No believable time to judge the road works in effect/,
+    );
+    assert.match(fake.connectionStatus.message.fr, /travaux : Pas d'heure fiable/);
+    assert.equal(fake.sceneEvents.length, 0);
+  });
+}
+
+test('no Date header: the local clock, when plausible, judges "in effect"', async () => {
+  const api = createApi((url) => json(real(url), { date: null }));
   const { begin, wait, fake } = await setup({ api });
   await begin();
   await wait(REQUEST_GAP_PLUS);
-  // 19 works of the capture had not started yet: all counted without a time.
-  assert.ok(published(fake, F(1, 'works'))[0] > 28);
+  assert.deepEqual(published(fake, F(1, 'works')), [28], 'the same count as with the Date header');
+});
+
+test('no Date header and a local clock of 1970: road works not counted', async () => {
+  const api = createApi((url) => json(real(url), { date: null }));
+  const { begin, wait, fake } = await setup({ api, start: Date.UTC(1970, 0, 2) });
+  await begin();
+  await wait(REQUEST_GAP_PLUS);
+  assert.deepEqual(published(fake, F(1, 'works')), []);
+  assert.match(fake.connectionStatus.message.en, /No believable time/);
 });
 
 test('in effect is judged on the server time, not on a skewed local clock', async () => {

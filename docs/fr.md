@@ -35,9 +35,11 @@ travaux viennent du ministère dans les deux langues ; les noms de lieux restent
 ministère (en-tête `Date` de sa réponse). Les dates des données n'ont pas de fuseau : elles sont lues à l'heure du
 Québec (heure de l'Est, heure avancée comprise). Des travaux prévus plus tard ne sont comptés qu'à leur début. Les
 données donnent une période, pas les heures de chaque jour : des travaux « en semaine » ou « de nuit » comptent pour
-toute leur période. Des travaux sans début ou fin lisible, ou une réponse sans heure de serveur lisible, comptent
-comme en cours (jamais cachés). Une heure de serveur à plus d'un jour de l'horloge de Gladys n'est pas crue (prise
-comme illisible).
+toute leur période. Des travaux dont le début ou la fin ne se lit pas comptent comme en cours ; quand plus de la
+moitié des travaux ont de telles dates, le jeu est refusé (son format a changé) et rien n'est compté. Sans en-tête
+`Date`, l'horloge de Gladys sert, si elle est plausible. Une `Date` à plus d'un jour de l'horloge de Gladys (l'une des
+deux est fausse), ou pas de `Date` avec une horloge non plausible : les travaux ne sont pas comptés du tout (jamais
+tous ceux de la liste), et le statut le dit.
 
 **Conditions hivernales** : les codes d'état de la chaussée du dictionnaire de données du ministère. « Dégagée et
 sèche » et « Dégagée et mouillée » ne sont pas des conditions hivernales ; partiellement enneigée, enneigée,
@@ -49,7 +51,9 @@ dans la zone ». Une visibilité réduite ou nulle est écrite dans le résumé 
 **Rien plutôt que 0** : une réponse qui n'est pas une liste complète (page d'erreur, liste coupée, liste dont plus de
 la moitié des entrées est illisible) n'est jamais publiée comme 0. Chacun des deux jeux de données est indépendant :
 quand l'un échoue, ses fonctions gardent leur dernière valeur, le statut dit pourquoi, et l'autre est quand même
-publié. Le résumé est publié avec les travaux ; il dit alors « Conditions hivernales non lues » si ce jeu a échoué.
+publié. Le résumé suit les jeux lus : il dit « Travaux non lus » ou « Conditions hivernales non lues » pour celui
+qui a échoué. Une liste sans le compte que le service envoie toujours (`numberMatched`) est prise comme coupée,
+jamais comme 0.
 
 ## Déclencheur de scène : « Nouveaux travaux dans une zone »
 
@@ -60,8 +64,9 @@ d'entrave (français), majeure (oui/non), début et fin (UTC, ISO 8601), distanc
 identifiant des travaux du ministère.
 
 Il n'est pas déclenché par la première lecture d'une zone, ni après que vous avez déplacé une zone (nouveau centre,
-rayon ou routes) : cette lecture apprend seulement ce qui est déjà là. Il n'est pas déclenché quand la réponse n'a
-pas d'heure de serveur lisible. Au plus 20 événements par zone et par lecture.
+rayon ou routes) : cette lecture apprend seulement ce qui est déjà là. Il n'est pas déclenché quand aucune heure n'est crue (voir plus haut). Au
+plus 20 événements par zone et par lecture : les autres viennent avec la lecture suivante (s'ils ont encore moins
+de 24 heures).
 
 ## Configuration
 
@@ -89,8 +94,9 @@ suivante. Il n'interroge pas le service du ministère.
   mémoire) ; déplacer une zone lit tout de suite, 5 secondes après la dernière requête.
 - Quand `/data` ne peut pas dire la dernière tentative (fichier illisible, date dans le futur, `/data` non
   inscriptible ou qui ne répond pas en 2 secondes), la première lecture attend 15 minutes après le démarrage, et le
-  statut le dit ; un `/data` qui cesse plus tard d'être inscriptible est dit aussi : un redémarrage peut alors lire
-  plus tôt.
+  statut le dit ; un `/data` illisible est relu toutes les 10 secondes, et ce qu'il garde (pause, travaux déjà vus)
+  revient dès qu'il se lit ; un `/data` qui cesse plus tard d'être inscriptible est dit aussi : un redémarrage peut
+  alors lire plus tôt.
 - Après un **429** (« trop de requêtes »), toutes les lectures font une pause de 15 minutes, puis 30, 60… jusqu'à
   6 heures ; après une erreur du serveur (**5xx**) ou un autre statut inattendu (400, 403, 404…), de 5 minutes, puis
   10, 20… jusqu'à 6 heures ; un `Retry-After` plus long est respecté, jusqu'à 6 heures. Un refus qui arrive pendant

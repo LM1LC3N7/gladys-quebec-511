@@ -12,7 +12,7 @@
 // -----------------------------------------------------------------------------
 
 import { readFileSync, statSync } from 'node:fs';
-import { rename, writeFile } from 'node:fs/promises';
+import { readFile, rename, stat, writeFile } from 'node:fs/promises';
 import { STATE_FILE } from './constants.js';
 
 const MAX_STATE_BYTES = 1024 * 1024;
@@ -46,6 +46,27 @@ export function createFileStore(file = STATE_FILE) {
         return { status: 'unreadable', data: {} };
       }
     },
+    /** The same, without blocking the process (the app bounds the wait). */
+    async loadAsync() {
+      let size;
+      try {
+        size = (await stat(file)).size;
+      } catch (err) {
+        return err?.code === 'ENOENT'
+          ? { status: 'absent', data: {} }
+          : { status: 'unreadable', data: {} };
+      }
+      try {
+        if (size > MAX_STATE_BYTES) return { status: 'unreadable', data: {} };
+        const data = JSON.parse(await readFile(file, 'utf8'));
+        if (!data || typeof data !== 'object' || Array.isArray(data)) {
+          return { status: 'unreadable', data: {} };
+        }
+        return { status: 'ok', data };
+      } catch {
+        return { status: 'unreadable', data: {} };
+      }
+    },
     save(data) {
       const snapshot = JSON.parse(JSON.stringify(data));
       const job = queue.then(
@@ -58,13 +79,14 @@ export function createFileStore(file = STATE_FILE) {
   };
 }
 
-/** The same in memory (tests): `status` forces what `load` says. */
+/** The same in memory (tests): `status` forces what `load` says (changeable). */
 export function createMemoryStore(initial, { status } = {}) {
   let data = initial === undefined ? undefined : structuredClone(initial);
   return {
     saves: 0,
+    status,
     load() {
-      if (status) return { status, data: {} };
+      if (this.status) return { status: this.status, data: {} };
       return data === undefined
         ? { status: 'absent', data: {} }
         : { status: 'ok', data: structuredClone(data) };
@@ -73,6 +95,9 @@ export function createMemoryStore(initial, { status } = {}) {
       this.saves += 1;
       if (this.failSave) throw new Error('disk full');
       if (this.hold) await this.hold;
+      data = structuredClone(next);
+    },
+    set data(next) {
       data = structuredClone(next);
     },
     get data() {

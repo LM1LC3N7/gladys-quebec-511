@@ -63,6 +63,11 @@ const isTime = (value) => Number.isFinite(value) && value > 0;
 const PAUSING = ['rate', 'server', 'http'];
 /** A server `Date` further than this from the local clock is not believed. */
 const DATE_SANITY = 24 * 60 * MINUTE;
+/** A local clock before this is not believed (a device that lost its time). */
+const LOCAL_FLOOR = Date.UTC(2026, 10, 1);
+/** /data unreadable at start: read again on its own timer, bounded. */
+const RELOAD_EVERY = 10 * SECOND;
+const LOAD_BOUND = 2 * SECOND;
 const NO_PAUSE = () => ({
   until: null,
   kind: null,
@@ -98,6 +103,8 @@ export class Quebec511App {
     this.connGen = 0;
     this.config = null;
     this.cycleTimer = null;
+    this.reloadTimer = null;
+    this.abortInflight = null;
     this.sleeps = new Set();
     this.pendingStart = undefined;
     this.starting = null;
@@ -190,6 +197,7 @@ export class Quebec511App {
   async stop() {
     this.gen += 1;
     this.cancelTimers();
+    this.abortInflight?.abort();
     await this.persist();
   }
 
@@ -204,6 +212,8 @@ export class Quebec511App {
   cancelTimers() {
     if (this.cycleTimer) this.timers.clearTimeout(this.cycleTimer);
     this.cycleTimer = null;
+    if (this.reloadTimer) this.timers.clearTimeout(this.reloadTimer);
+    this.reloadTimer = null;
     for (const sleep of this.sleeps) {
       this.timers.clearTimeout(sleep.timer);
       sleep.resolve();
@@ -232,7 +242,9 @@ export class Quebec511App {
     this.cancelTimers();
     const config = normalizeConfig(raw);
     this.config = config;
-    this.load();
+    await this.load();
+    if (gen !== this.gen) return;
+    this.armReload();
     for (const error of config.errors) {
       this.logger.warn(`Configuration: field ${error.field} refused (${error.code})`);
     }
@@ -327,56 +339,78 @@ export class Quebec511App {
     );
   }
 
-  load() {
+  /** Reads /data once per process (bounded); an unreadable file is read again every 10 s. */
+  async load() {
     if (this.loaded) return;
     this.loaded = true;
-    let result;
-    try {
-      result = this.store.load();
-    } catch {
-      result = { status: 'unreadable', data: {} };
-    }
+    const result = await this.readStore();
     this.storeStatus = result.status;
     if (result.status === 'unreadable') {
       this.logger.warn(
         'The state file of /data is unreadable: left untouched, running from memory',
       );
     }
-    const data = result.data ?? {};
-    const persisted = { zones: {} };
-    if (isTime(data.lastAttemptAt)) persisted.lastAttemptAt = data.lastAttemptAt;
-    if (data.pause && typeof data.pause === 'object') {
-      const level = (n) => (Number.isInteger(n) && n >= 0 && n <= 30 ? n : 0);
-      persisted.pause = {
-        until: isTime(data.pause.until) ? data.pause.until : null,
-        kind: PAUSING.includes(data.pause.kind) ? data.pause.kind : 'rate',
-        status:
-          Number.isInteger(data.pause.status) &&
-          data.pause.status >= 100 &&
-          data.pause.status <= 599
-            ? data.pause.status
-            : null,
-        level429: level(data.pause.level429),
-        level5xx: level(data.pause.level5xx),
-        levelHttp: level(data.pause.levelHttp),
-      };
+    this.persisted = parseState(result.data ?? {});
+  }
+
+  /** One read of /data, never waiting more than LOAD_BOUND for it. */
+  async readStore() {
+    let timer;
+    const late = new Promise((resolve) => {
+      timer = this.timers.setTimeout(() => resolve({ status: 'unreadable', data: {} }), LOAD_BOUND);
+    });
+    try {
+      const read =
+        typeof this.store.loadAsync === 'function'
+          ? this.store.loadAsync()
+          : Promise.resolve().then(() => this.store.load());
+      return await Promise.race([read, late]);
+    } catch {
+      return { status: 'unreadable', data: {} };
+    } finally {
+      this.timers.clearTimeout(timer);
     }
-    if (typeof data.salt === 'string' && /^[0-9a-f]{32}$/.test(data.salt))
-      persisted.salt = data.salt;
-    else persisted.salt = randomBytes(16).toString('hex');
-    if (data.zones && typeof data.zones === 'object') {
-      for (const [slot, zone] of Object.entries(data.zones)) {
-        if (!/^[1-3]$/.test(slot) || !zone || typeof zone.fingerprint !== 'string') continue;
-        const seen = {};
-        if (zone.seen && typeof zone.seen === 'object') {
-          for (const [id, at] of Object.entries(zone.seen).slice(0, SEEN_MAX)) {
-            if (id.length <= 120 && isTime(at)) seen[id] = at;
-          }
-        }
-        persisted.zones[slot] = { fingerprint: zone.fingerprint, seen };
+  }
+
+  /**
+   * While /data is unreadable, one read every 10 s on its own timer. Once it
+   * reads again, what it holds comes back (pause, works seen, salt), the
+   * latest attempt and the longest pause winning over what memory holds.
+   */
+  armReload() {
+    if (this.reloadTimer || this.storeStatus !== 'unreadable') return;
+    const gen = this.gen;
+    this.reloadTimer = this.timers.setTimeout(async () => {
+      this.reloadTimer = null;
+      const result = await this.readStore();
+      if (gen !== this.gen) return;
+      if (result.status === 'unreadable') {
+        this.armReload();
+        return;
       }
-    }
-    this.persisted = persisted;
+      const restored = parseState(result.data ?? {});
+      const memory = this.persisted;
+      if (isTime(memory.lastAttemptAt) && !(restored.lastAttemptAt >= memory.lastAttemptAt)) {
+        restored.lastAttemptAt = memory.lastAttemptAt;
+      }
+      if (memory.pause && !(restored.pause?.until >= (memory.pause.until ?? 0))) {
+        restored.pause = memory.pause;
+      }
+      const wall = this.now();
+      const until = restored.pause?.until;
+      if (isTime(until) && until > wall && until - wall <= PAUSE_MAX) {
+        const mono = this.monotonic();
+        if (this.pauseUntilMono === null || this.pauseUntilMono < mono + (until - wall)) {
+          this.pauseUntilMono = mono + (until - wall);
+        }
+      }
+      this.storeStatus = result.status;
+      this.persisted = restored;
+      this.logger.info('The state file of /data reads again');
+      await this.persist();
+      if (gen !== this.gen) return;
+      await this.updateStatus(gen);
+    }, RELOAD_EVERY);
   }
 
   /** A salted fingerprint of the zone: never its coordinates in clear. */
@@ -493,7 +527,7 @@ export class Quebec511App {
       }
       if (gen !== this.gen) return;
       if (result.ok) {
-        result.at = this.believableDate(result.at);
+        result.at = this.referenceTime(result.at);
         // A success lifts the pauses.
         this.pauseUntilMono = null;
         if (this.persisted.pause) this.persisted.pause = NO_PAUSE();
@@ -502,7 +536,12 @@ export class Quebec511App {
           `Layer ${key}: read failed (${result.kind}${result.status ? ` ${result.status}` : ''})`,
         );
       }
-      layers[key] = result;
+      // Without a time to judge "in effect" on, the works are not counted at all
+      // (never every listed work, never 0): said in the status.
+      layers[key] =
+        result.ok && key === 'works' && result.at === null
+          ? { ok: false, kind: 'no_time' }
+          : result;
     }
     for (const zone of config.zones) {
       await this.onZoneRead(zone, layers, gen);
@@ -523,14 +562,26 @@ export class Quebec511App {
     await this.updateStatus(gen);
   }
 
-  /** A server date more than a day away from the local clock is not believed. */
-  believableDate(at) {
-    if (at === null) return null;
-    if (Math.abs(at - this.now()) > DATE_SANITY) {
-      this.logger.warn('The Date of the MTMD answer is more than a day off: not used');
+  /**
+   * The time "in effect" is judged on: the server `Date` when it agrees with
+   * the local clock within a day; without a `Date`, the local clock when it is
+   * plausible; otherwise `null` (one of the two clocks is wrong, which one is
+   * unknown).
+   */
+  referenceTime(at) {
+    const local = this.now();
+    if (at !== null) {
+      if (Math.abs(at - local) <= DATE_SANITY) return at;
+      this.logger.warn(
+        'The Date of the MTMD answer is more than a day off the local clock: works not counted',
+      );
       return null;
     }
-    return at;
+    if (local >= LOCAL_FLOOR) return local;
+    this.logger.warn(
+      'No Date in the MTMD answer and the local clock is not plausible: works not counted',
+    );
+    return null;
   }
 
   /** The pause left, in ms (0 when none). */
@@ -560,7 +611,13 @@ export class Quebec511App {
     // A pause started meanwhile (a late 429 of an older round) holds this one.
     if (this.pausedFor() > 0) return { ok: false, kind: 'paused' };
     this.lastRequestMono = this.monotonic();
-    const job = getJson(url, { fetchImpl: this.fetchImpl, timers: this.timers });
+    const abort = new AbortController();
+    this.abortInflight = abort;
+    const job = getJson(url, {
+      fetchImpl: this.fetchImpl,
+      timers: this.timers,
+      signal: abort.signal,
+    });
     this.inflight = job.then(
       () => {},
       () => {},
@@ -622,14 +679,17 @@ export class Quebec511App {
       states.push(
         { device_feature_external_id: ids.feature(FEATURES.WORKS), state: counts.works },
         { device_feature_external_id: ids.feature(FEATURES.MAJOR), state: counts.major },
-        {
-          device_feature_external_id: ids.feature(FEATURES.SUMMARY),
-          text: summary(works, conditions, language),
-        },
       );
     }
     if (winter !== null) {
       states.push({ device_feature_external_id: ids.feature(FEATURES.WINTER), state: winter });
+    }
+    // The summary follows what was read: a failed layer is said in it.
+    if (works || conditions) {
+      states.push({
+        device_feature_external_id: ids.feature(FEATURES.SUMMARY),
+        text: summary(works, conditions, language),
+      });
     }
     const created = this.gladys.devices?.some((device) => device.external_id === ids.device);
     if (created && states.length > 0) {
@@ -654,20 +714,24 @@ export class Quebec511App {
     const wall = this.now();
     const previous = this.persisted.zones[zone.slot];
     const baseline = !previous || previous.fingerprint !== fingerprint;
-    const seen = baseline ? {} : previous.seen;
+    // A Map: an id such as "constructor" or "__proto__" is an id like any other.
+    const seen = new Map(baseline ? [] : Object.entries(previous.seen));
     const fresh = [];
     if (!baseline && at !== null) {
       for (const match of matches) {
-        if (seen[match.work.id] !== undefined) continue;
+        if (seen.has(match.work.id)) continue;
         const { work } = match;
         const times = [work.start, work.updated].filter((v) => v !== null && v <= at + 5 * MINUTE);
         const latest = times.length > 0 ? Math.max(...times) : null;
         if (latest !== null && at - latest <= FRESH_EVENT) fresh.push(match);
       }
     }
-    for (const match of matches) seen[match.work.id] = wall;
+    // Past 20 new works in one read, the others stay unseen: announced by the
+    // next read (when still fresh), never dropped.
+    const held = new Set(fresh.slice(SCENE_EVENTS_PER_READ).map((m) => m.work.id));
+    for (const match of matches) if (!held.has(match.work.id)) seen.set(match.work.id, wall);
     // Bounded: entries not seen for 14 days go, then the oldest past SEEN_MAX.
-    const kept = Object.entries(seen)
+    const kept = [...seen]
       .filter(([, when]) => wall - when <= SEEN_KEEP)
       .sort((a, b) => b[1] - a[1])
       .slice(0, SEEN_MAX);
@@ -837,6 +901,42 @@ export class Quebec511App {
       this.logger.warn(`Status not published (${err?.name ?? 'Error'})`);
     }
   }
+}
+
+/** The state of /data read strictly: anything unexpected is left out. */
+function parseState(data) {
+  const persisted = { zones: {} };
+  if (isTime(data.lastAttemptAt)) persisted.lastAttemptAt = data.lastAttemptAt;
+  if (data.pause && typeof data.pause === 'object') {
+    const level = (n) => (Number.isInteger(n) && n >= 0 && n <= 30 ? n : 0);
+    persisted.pause = {
+      until: isTime(data.pause.until) ? data.pause.until : null,
+      kind: PAUSING.includes(data.pause.kind) ? data.pause.kind : 'rate',
+      status:
+        Number.isInteger(data.pause.status) && data.pause.status >= 100 && data.pause.status <= 599
+          ? data.pause.status
+          : null,
+      level429: level(data.pause.level429),
+      level5xx: level(data.pause.level5xx),
+      levelHttp: level(data.pause.levelHttp),
+    };
+  }
+  if (typeof data.salt === 'string' && /^[0-9a-f]{32}$/.test(data.salt)) persisted.salt = data.salt;
+  else persisted.salt = randomBytes(16).toString('hex');
+  if (data.zones && typeof data.zones === 'object') {
+    for (const [slot, zone] of Object.entries(data.zones)) {
+      if (!/^[1-3]$/.test(slot) || !zone || typeof zone.fingerprint !== 'string') continue;
+      // No prototype: an id "__proto__" is a key like any other.
+      const seen = Object.create(null);
+      if (zone.seen && typeof zone.seen === 'object') {
+        for (const [id, at] of Object.entries(zone.seen).slice(0, SEEN_MAX)) {
+          if (id.length <= 120 && isTime(at)) seen[id] = at;
+        }
+      }
+      persisted.zones[slot] = { fingerprint: zone.fingerprint, seen };
+    }
+  }
+  return persisted;
 }
 
 /** The flat data of the scene trigger (≤ 30 keys, texts bounded). */

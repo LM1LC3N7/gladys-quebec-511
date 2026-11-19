@@ -78,8 +78,13 @@ test('the layer envelope: a FeatureCollection only; numberMatched must equal the
       incomplete: true,
     },
   );
-  const ok = readLayer(WORKS, { type: 'FeatureCollection', features: [work(1)] });
-  assert.equal(ok.items.length, 1, 'numberMatched absent: the list as is');
+  assert.deepEqual(
+    readLayer(WORKS, { type: 'FeatureCollection', features: [] }),
+    { incomplete: true },
+    'numberMatched absent: never 0',
+  );
+  const ok = readLayer(WORKS, { type: 'FeatureCollection', numberMatched: 1, features: [work(1)] });
+  assert.equal(ok.items.length, 1);
   assert.deepEqual(
     readLayer(WORKS, { type: 'FeatureCollection', features: Array(5001).fill(work(1)) }),
     {

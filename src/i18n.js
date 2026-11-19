@@ -22,6 +22,7 @@ const TEXTS = {
     roadsBare: 'Roads bare',
     noSegment: 'No winter condition segment in the zone',
     conditionsUnread: 'Winter conditions not read',
+    worksUnread: 'Road works not read',
     visibilityReduced: 'reduced visibility',
     visibilityNone: 'no visibility',
     zoneDefault: ({ slot }) => `Québec 511 zone ${slot}`,
@@ -45,6 +46,7 @@ const TEXTS = {
     roadsBare: 'Chaussées dégagées',
     noSegment: 'Aucun tronçon de conditions hivernales dans la zone',
     conditionsUnread: 'Conditions hivernales non lues',
+    worksUnread: 'Travaux non lus',
     visibilityReduced: 'visibilité réduite',
     visibilityNone: 'visibilité nulle',
     zoneDefault: ({ slot }) => `Québec 511 zone ${slot}`,
@@ -166,6 +168,10 @@ const FAILURES = {
     fr: 'le MTMD envoie des données illisibles (son format a peut-être changé), rien publié',
   },
   too_big: { en: 'MTMD answer too large', fr: 'réponse du MTMD trop grande' },
+  no_time: {
+    en: 'no believable time to judge the road works in effect (server Date missing or more than a day from the Gladys clock), not counted',
+    fr: "pas d'heure fiable pour juger les travaux en cours (en-tête Date absent ou à plus d'un jour de l'horloge de Gladys), non comptés",
+  },
   incomplete: {
     en: 'MTMD answer incomplete (fewer features than announced)',
     fr: 'réponse du MTMD incomplète (moins de données qu’annoncé)',

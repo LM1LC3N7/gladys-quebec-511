@@ -12,9 +12,17 @@ const HOME_ZONE = zoneOf(HOME);
 const works = () => readLayer('ms:chantiers_mtmdet', collection('works')).items;
 const conditions = () => readLayer('ms:conditions_routieres', collection('conditions')).items;
 const read = (f) =>
-  readLayer('ms:chantiers_mtmdet', { type: 'FeatureCollection', features: f }).items;
+  readLayer('ms:chantiers_mtmdet', {
+    type: 'FeatureCollection',
+    numberMatched: f.length,
+    features: f,
+  }).items;
 const readSegs = (f) =>
-  readLayer('ms:conditions_routieres', { type: 'FeatureCollection', features: f }).items;
+  readLayer('ms:conditions_routieres', {
+    type: 'FeatureCollection',
+    numberMatched: f.length,
+    features: f,
+  }).items;
 
 test('the box holds the whole circle, even at the edge nearest the pole', () => {
   const zone = { latitude: 59, longitude: -129, radiusKm: 300 };

@@ -56,8 +56,11 @@ export function layerUrl(layer, bbox, base = WFS_BASE) {
  * `rate` (429), `server` (5xx), `http` (other status), `format`, `too_big`.
  * Never throws.
  */
-export async function getJson(url, { fetchImpl = fetch, timers = globalThis } = {}) {
+export async function getJson(url, { fetchImpl = fetch, timers = globalThis, signal } = {}) {
   const controller = new AbortController();
+  // A stop of the app cuts the request at once (never left open 30 s).
+  if (signal?.aborted) controller.abort();
+  signal?.addEventListener?.('abort', () => controller.abort(), { once: true });
   let timedOut = false;
   const timer = timers.setTimeout(() => {
     timedOut = true;
@@ -327,11 +330,9 @@ export function readLayer(layer, json) {
   if (!read || !json || typeof json !== 'object' || Array.isArray(json)) return null;
   if (json.type !== 'FeatureCollection' || !Array.isArray(json.features)) return null;
   if (json.features.length > MAX_FEATURES) return { incomplete: true };
-  // A count from the server larger than the list: a cut answer, never a count.
-  if (
-    json.numberMatched !== undefined &&
-    !(Number.isInteger(json.numberMatched) && json.numberMatched === json.features.length)
-  ) {
+  // The service always sends `numberMatched` (checked on both layers): absent,
+  // or another count than the list, the answer is cut, never a count.
+  if (!(Number.isInteger(json.numberMatched) && json.numberMatched === json.features.length)) {
     return { incomplete: true };
   }
   const items = [];
@@ -347,6 +348,14 @@ export function readLayer(layer, json) {
   }
   if (json.features.length > 0 && skipped * 2 > json.features.length) {
     return { unreadable: true, skipped, raw: json.features.length };
+  }
+  // Works whose dates cannot be read count as in effect: when most of them
+  // cannot, the date format changed, and every finished work would count.
+  const undated = items.filter(
+    (item) => 'start' in item && (item.start === null || item.end === null),
+  );
+  if (items.length > 0 && undated.length * 2 > items.length) {
+    return { unreadable: true, skipped: undated.length, raw: json.features.length };
   }
   return { items, skipped, raw: json.features.length };
 }
