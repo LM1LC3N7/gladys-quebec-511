@@ -36,7 +36,7 @@ ministère (en-tête `Date` de sa réponse). Les dates des données n'ont pas de
 Québec (heure de l'Est, heure avancée comprise). Des travaux prévus plus tard ne sont comptés qu'à leur début. Les
 données donnent une période, pas les heures de chaque jour : des travaux « en semaine » ou « de nuit » comptent pour
 toute leur période. Des travaux dont le début ou la fin ne se lit pas comptent comme en cours ; quand plus de la
-moitié des travaux ont de telles dates, le jeu est refusé (son format a changé) et rien n'est compté. Sans en-tête
+moitié des travaux ont de telles dates (dans une réponse de 3 travaux ou plus), le jeu est refusé (son format a changé) et rien n'est compté. Sans en-tête
 `Date`, l'horloge de Gladys sert, si elle est plausible. Une `Date` à plus d'un jour de l'horloge de Gladys (l'une des
 deux est fausse), ou pas de `Date` avec une horloge non plausible : les travaux ne sont pas comptés du tout (jamais
 tous ceux de la liste), et le statut le dit.

@@ -104,6 +104,7 @@ export class Quebec511App {
     this.config = null;
     this.cycleTimer = null;
     this.reloadTimer = null;
+    this.pendingRead = null;
     this.abortInflight = null;
     this.sleeps = new Set();
     this.pendingStart = undefined;
@@ -364,6 +365,16 @@ export class Quebec511App {
         typeof this.store.loadAsync === 'function'
           ? this.store.loadAsync()
           : Promise.resolve().then(() => this.store.load());
+      // The read itself, kept until it settles (even past the bound): never a
+      // second one while it hangs on a frozen /data.
+      const pending = Promise.resolve(read).then(
+        () => {},
+        () => {},
+      );
+      this.pendingRead = pending;
+      pending.then(() => {
+        if (this.pendingRead === pending) this.pendingRead = null;
+      });
       return await Promise.race([read, late]);
     } catch {
       return { status: 'unreadable', data: {} };
@@ -382,6 +393,14 @@ export class Quebec511App {
     const gen = this.gen;
     this.reloadTimer = this.timers.setTimeout(async () => {
       this.reloadTimer = null;
+      // One read of /data at a time: while the last one still hangs, wait for
+      // it, and count the 10 s from its end.
+      if (this.pendingRead) {
+        this.pendingRead.then(() => {
+          if (gen === this.gen) this.armReload();
+        });
+        return;
+      }
       const result = await this.readStore();
       if (gen !== this.gen) return;
       if (result.status === 'unreadable') {
@@ -404,11 +423,27 @@ export class Quebec511App {
           this.pauseUntilMono = mono + (until - wall);
         }
       }
+      // The time of the last attempt from the file holds back the first round
+      // of this process too (never sooner than the interval).
+      if (this.lastAttemptMono === null && isTime(restored.lastAttemptAt) && this.config) {
+        const left = restored.lastAttemptAt + this.config.refreshMinutes * MINUTE - wall;
+        const mono = this.monotonic();
+        if (left > 0 && left <= this.config.refreshMinutes * MINUTE) {
+          this.nextDueMono = Math.max(this.nextDueMono ?? mono, mono + left);
+        }
+      }
+      if (this.pauseUntilMono !== null && this.nextDueMono !== null) {
+        this.nextDueMono = Math.max(this.nextDueMono, this.pauseUntilMono);
+      }
       this.storeStatus = result.status;
       this.persisted = restored;
       this.logger.info('The state file of /data reads again');
-      await this.persist();
+      const saved = await this.persist();
       if (gen !== this.gen) return;
+      if (saved) {
+        this.dataTells = true;
+        this.saveFailed = false;
+      }
       await this.updateStatus(gen);
     }, RELOAD_EVERY);
   }

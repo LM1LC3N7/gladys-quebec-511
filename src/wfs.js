@@ -31,6 +31,8 @@ import { readGeometry } from './geo.js';
 // eslint-disable-next-line no-control-regex
 const CONTROL = /[\u0000-\u001f\u007f-\u009f]/g;
 const TEXT_MAX = 2000;
+/** Below this many works, undated ones are not taken as a format change. */
+const MIN_DATED_CHECK = 3;
 
 /**
  * The URL of a layer inside a box `[minLon, minLat, maxLon, maxLat]`. The
@@ -354,7 +356,7 @@ export function readLayer(layer, json) {
   const undated = items.filter(
     (item) => 'start' in item && (item.start === null || item.end === null),
   );
-  if (items.length > 0 && undated.length * 2 > items.length) {
+  if (items.length >= MIN_DATED_CHECK && undated.length * 2 > items.length) {
     return { unreadable: true, skipped: undated.length, raw: json.features.length };
   }
   return { items, skipped, raw: json.features.length };

@@ -250,5 +250,41 @@
     "file": "src/app.js",
     "from": "if (works || conditions) {",
     "to": "if (works) {"
+  },
+  {
+    "name": "one /data read at a time",
+    "file": "src/app.js",
+    "from": "      if (this.pendingRead) {\n",
+    "to": "      if (false) {\n"
+  },
+  {
+    "name": "reload ignored after a stop",
+    "file": "src/app.js",
+    "from": "      const result = await this.readStore();\n      if (gen !== this.gen) return;\n",
+    "to": "      const result = await this.readStore();\n"
+  },
+  {
+    "name": "latest attempt kept on reload",
+    "file": "src/app.js",
+    "from": "if (isTime(memory.lastAttemptAt) && !(restored.lastAttemptAt >= memory.lastAttemptAt)) {",
+    "to": "if (false) {"
+  },
+  {
+    "name": "few works not judged undated",
+    "file": "src/wfs.js",
+    "from": "items.length >= MIN_DATED_CHECK &&",
+    "to": "items.length > 0 &&"
+  },
+  {
+    "name": "status after reload: next read",
+    "file": "src/app.js",
+    "from": "this.nextDueMono = Math.max(this.nextDueMono, this.pauseUntilMono);",
+    "to": "this.nextDueMono = this.nextDueMono;"
+  },
+  {
+    "name": "status after reload: /data tells",
+    "file": "src/app.js",
+    "from": "        this.dataTells = true;\n",
+    "to": ""
   }
 ]

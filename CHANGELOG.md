@@ -26,3 +26,5 @@ the notes of the version's GitHub Release.
   clock), road works are not counted and the status says so; a list without `numberMatched` is never 0.
 - `/data` unreadable at start is read again every 10 s; a stop cuts the request in flight; more than 20 new works
   in one read are announced at the next read.
+- One read of an unreadable `/data` at a time (a hanging read is never doubled); the status is up to date once
+  `/data` reads again.

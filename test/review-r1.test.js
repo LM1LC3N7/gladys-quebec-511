@@ -160,7 +160,7 @@ test('/data unreadable at start is read again every 10 s; its pause comes back',
   assert.equal(store.data.pause.level429, 2);
 });
 
-test('a /data that never answers is given up after 2 s, then read again', async () => {
+test('a /data that never answers: given up after 2 s, one read at a time, the WFS still read', async () => {
   const store = createMemoryStore();
   let reads = 0;
   store.loadAsync = () => {
@@ -168,13 +168,98 @@ test('a /data that never answers is given up after 2 s, then read again', async 
     return new Promise(() => {});
   };
   store.save = async () => {};
-  const { app, wait, fake } = await setup({ store });
+  const { app, wait, fake, api } = await setup({ store });
   app.start(HOME);
   await wait(2 * SECOND + 10);
   assert.match(fake.connectionStatus.message.en, /state file of \/data is unreadable/);
-  await wait(12 * SECOND);
-  assert.ok(reads >= 2, `${reads} reads`);
-  assert.ok(reads <= 3, 'one read at a time, every 10 s');
+  await wait(5 * MINUTE);
+  assert.equal(reads, 1, 'the hanging read is never doubled');
+  await wait(10 * MINUTE + GAP);
+  assert.equal(api.calls.length, 2, 'the rounds go on: /data is not on their path');
+});
+
+test('the next read of /data starts 10 s after the end of the last one', async () => {
+  const store = createMemoryStore();
+  let reads = 0;
+  let release;
+  store.loadAsync = () => {
+    reads += 1;
+    if (reads === 1) return new Promise((resolve) => (release = resolve));
+    return Promise.resolve({ status: 'unreadable', data: {} });
+  };
+  store.save = async () => {};
+  const { app, wait } = await setup({ store });
+  app.start(HOME);
+  await wait(MINUTE);
+  assert.equal(reads, 1);
+  release({ status: 'unreadable', data: {} });
+  await wait(0);
+  await wait(9 * SECOND);
+  assert.equal(reads, 1, 'not before 10 s after its end');
+  await wait(2 * SECOND);
+  assert.equal(reads, 2);
+});
+
+test('a read of /data ending after a stop restores nothing', async () => {
+  const store = createMemoryStore();
+  let reads = 0;
+  let release;
+  store.loadAsync = () => {
+    reads += 1;
+    if (reads === 1) return Promise.resolve({ status: 'unreadable', data: {} });
+    return new Promise((resolve) => (release = resolve));
+  };
+  const { app, wait, fake, clock } = await setup({ store });
+  app.start(HOME);
+  await wait(0);
+  await wait(11 * SECOND);
+  assert.equal(reads, 2);
+  await app.stop();
+  const statuses = fake.connectionStatuses.length;
+  release({
+    status: 'ok',
+    data: { pause: { until: clock.wall() + HOUR, kind: 'rate', level429: 1 } },
+  });
+  await wait(SECOND);
+  assert.equal(store.saves, 0, 'nothing written');
+  assert.equal(app.pausedFor(), 0, 'nothing restored');
+  assert.equal(fake.connectionStatuses.length, statuses, 'no status');
+});
+
+test('a /data reading again with an older attempt never makes the next round sooner', async () => {
+  const store = createMemoryStore(undefined, { status: 'unreadable' });
+  const { begin, wait, api, clock, app } = await setup({ store });
+  await begin();
+  await wait(INTERVAL + GAP);
+  assert.equal(api.calls.length, 2, 'first round 15 min after the start');
+  const memoryAttempt = app.persisted.lastAttemptAt;
+  store.status = undefined;
+  store.data = { lastAttemptAt: clock.wall() - 2 * HOUR };
+  await wait(10 * SECOND);
+  assert.equal(store.data.lastAttemptAt, memoryAttempt, 'the latest attempt kept');
+  await wait(INTERVAL - 30 * SECOND);
+  assert.equal(api.calls.length, 2, 'no read before the interval');
+});
+
+test('after /data reads again, the status tells the restored pause and drops the /data warning', async () => {
+  const store = createMemoryStore(undefined, { status: 'unreadable' });
+  const { begin, wait, fake, clock } = await setup({ store });
+  await begin();
+  assert.match(
+    fake.connectionStatus.message.en,
+    /\/data does not tell when the source was last read/,
+  );
+  store.status = undefined;
+  store.data = {
+    lastAttemptAt: clock.wall() - MINUTE,
+    pause: { until: clock.wall() + 2 * HOUR, kind: 'rate', status: 429, level429: 2 },
+  };
+  await wait(11 * SECOND);
+  const message = fake.connectionStatus.message.en;
+  assert.doesNotMatch(message, /\/data does not tell/);
+  assert.doesNotMatch(message, /unreadable/);
+  assert.match(message, /reads paused until Nov 15, 09:42 ET/);
+  assert.match(message, /Next read Nov 15, 09:42 ET\./);
 });
 
 test('a stop cuts the request in flight', async () => {
@@ -204,9 +289,18 @@ test('works whose dates mostly cannot be read: the layer is refused, never all i
     fake.connectionStatus.message.en,
     /road works: The MTMD sends features that cannot be read/,
   );
-  // A few undated ones among readable ones are kept (in effect).
+  // A few undated ones among readable ones are kept (in effect); a lone undated
+  // work is not a format change either.
   state.works = [work(1, { fin: '' }), work(2), work(3)];
   await wait(INTERVAL);
   await wait(GAP);
   assert.deepEqual(published(fake, F(1, 'works')), [3]);
+});
+
+test('a lone work without an end counts as in effect (too few works to judge the format)', async () => {
+  const state = { works: [work(1, { fin: '' })] };
+  const { begin, wait, fake } = await setup({ api: worksApi(state) });
+  await begin();
+  await wait(GAP);
+  assert.deepEqual(published(fake, F(1, 'works')), [1]);
 });

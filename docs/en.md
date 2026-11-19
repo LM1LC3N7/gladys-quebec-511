@@ -34,7 +34,7 @@ titles come in both languages from the ministry; place names stay as the ministr
 server (`Date` header of its answer). The dates of the data have no time zone: they are read as Québec time
 (Eastern, daylight saving time included). Road works planned for later are not counted until they start. The data
 gives a period, not daily hours: works "during the week" or "at night" count for their whole period. A work whose
-start or end cannot be read counts as in effect; when more than half of the works have such dates, the dataset is
+start or end cannot be read counts as in effect; when more than half of the works have such dates (in an answer of 3 works or more), the dataset is
 refused (its format changed) and nothing is counted. Without a `Date` header, the clock of Gladys is used, when it is
 plausible. A `Date` more than a day away from the clock of Gladys (one of the two is wrong), or no `Date` with an
 implausible clock: the road works are not counted at all (never every listed work), and the status says so.
