@@ -1,6 +1,6 @@
 {
   "name": "gladys-quebec-511",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Unofficial Québec 511 integration for Gladys Assistant: road works, restrictions and winter road conditions in Québec from the open data of the Ministère des Transports et de la Mobilité durable (Données Québec, CC BY 4.0).",
   "type": "module",

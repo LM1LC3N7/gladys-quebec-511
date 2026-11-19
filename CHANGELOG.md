@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-19
+
 ### Added
 
 - Up to three watch zones in Québec, each one a Gladys device: road works in effect, major road works, road
@@ -28,3 +30,6 @@ the notes of the version's GitHub Release.
   in one read are announced at the next read.
 - One read of an unreadable `/data` at a time (a hanging read is never doubled); the status is up to date once
   `/data` reads again.
+
+[Unreleased]: https://github.com/LM1LC3N7/gladys-quebec-511/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/LM1LC3N7/gladys-quebec-511/releases/tag/v0.1.1
