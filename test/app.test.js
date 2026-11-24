@@ -76,7 +76,7 @@ test('the request: geojson in EPSG:4326, box of every zone in lat/lon order, hon
   const headers = api.calls[0].init.headers;
   assert.match(
     headers['User-Agent'],
-    /^gladys-quebec-511\/0\.1\.0 \(\+https:\/\/github\.com\/LM1LC3N7\/gladys-quebec-511\)$/,
+    /^gladys-quebec-511\/\d+\.\d+\.\d+ \(\+https:\/\/github\.com\/LM1LC3N7\/gladys-quebec-511\)$/,
   );
   assert.match(headers.Accept, /application\/geo\+json/);
   assert.equal(api.calls[0].init.redirect, 'error');
